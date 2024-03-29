@@ -159,7 +159,7 @@ const DisplayWrapper = styled.div`
   flex-direction: column;
   gap: 50px;
   padding: 50px 5%;
-  background-color: #1d7d4d;
+  background-color: #4889e5;
   transition: all 0.5s ease-in-out;
 `;
 

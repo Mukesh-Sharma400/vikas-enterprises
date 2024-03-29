@@ -189,7 +189,7 @@ const PrimaryBtn = styled.button`
   font-size: 20px;
   font-weight: 600;
   color: white;
-  background-color: #1d7d4d;
+  background-color: #4889e5;
   border-radius: 40px;
   width: 180px;
   min-width: 180px;
@@ -206,9 +206,9 @@ const PrimaryBtn = styled.button`
 const SecondaryBtn = styled.button`
   font-size: 20px;
   font-weight: 600;
-  color: #1d7d4d;
+  color: #4889e5;
   background-color: transparent;
-  border: 2px solid #1d7d4d !important;
+  border: 2px solid #4889e5 !important;
   border-radius: 40px;
   width: 180px;
   min-width: 180px;
@@ -241,6 +241,6 @@ const SocialLink = styled(Link)`
   font-size: 20px;
   border-radius: 50%;
   color: white;
-  background-color: rgba(29, 125, 77, 0.4);
+  background-color: #79a9ec;
   transition: all 0.5s ease-in-out;
 `;
