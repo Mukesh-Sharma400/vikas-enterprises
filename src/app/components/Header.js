@@ -96,7 +96,7 @@ const Logo = styled(Image)`
 const Name = styled.p`
   font-size: 30px;
   font-weight: 600;
-  color: #4889e5;
+  color: #1877f2;
   transition: all 0.5s ease-in-out;
 `;
 
@@ -110,7 +110,7 @@ const RoutesWrapper = styled.div`
 const Route = styled(Link)`
   position: relative;
   font-size: 16px;
-  color: #4889e5;
+  color: #1877f2;
   text-decoration: none;
   padding-bottom: 3px;
 
@@ -135,7 +135,7 @@ const Route = styled(Link)`
     bottom: 0;
     left: 0;
     height: 2px;
-    background-color: #4889e5;
+    background-color: #1877f2;
     width: 0;
     transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
   }
@@ -153,7 +153,7 @@ const ContactBtn = styled.button`
   font-size: 20px;
   font-weight: 600;
   color: white;
-  background-color: #4889e5;
+  background-color: #1877f2;
   border-radius: 40px;
   width: 180px;
   height: 50px;

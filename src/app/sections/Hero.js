@@ -140,6 +140,8 @@ const InnerContentWrapper = styled.div`
 const Heading = styled.h1`
   font-size: 60px;
   color: white;
+  text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3),
+    0px -4px 10px rgba(255, 255, 255, 0.3);
   transition: all 0.5s ease-in-out;
 
   @media (max-width: 550px) {
@@ -189,7 +191,7 @@ const PrimaryBtn = styled.button`
   font-size: 20px;
   font-weight: 600;
   color: white;
-  background-color: #4889e5;
+  background-color: #1877f2;
   border-radius: 40px;
   width: 180px;
   min-width: 180px;
@@ -206,9 +208,9 @@ const PrimaryBtn = styled.button`
 const SecondaryBtn = styled.button`
   font-size: 20px;
   font-weight: 600;
-  color: #4889e5;
+  color: #1877f2;
   background-color: transparent;
-  border: 2px solid #4889e5 !important;
+  border: 2px solid #1877f2 !important;
   border-radius: 40px;
   width: 180px;
   min-width: 180px;
@@ -241,6 +243,6 @@ const SocialLink = styled(Link)`
   font-size: 20px;
   border-radius: 50%;
   color: white;
-  background-color: #79a9ec;
+  background-color: #1877f270;
   transition: all 0.5s ease-in-out;
 `;
