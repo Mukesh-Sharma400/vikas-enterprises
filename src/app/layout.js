@@ -13,7 +13,7 @@ export const metadata = {
     "interior design, creative spaces, home decor, aesthetic designs, innovative interiors",
   author: "Mukesh Sharma",
   image: "./icon.png",
-  url: "https://",
+  url: "https://vikas-enterprises.vercel.app",
   type: "website",
   ogTitle: "Vikas Enterprises",
   ogDescription:

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://
+Sitemap: https://vikas-enterprises.vercel.app/sitemap.xml
