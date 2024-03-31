@@ -196,6 +196,7 @@ const ButtonsWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
+  transition: all 0.5s ease-in-out;
 `;
 
 const ContactBtn = styled.button`

@@ -126,6 +126,7 @@ const Route = styled.button`
   color: #1877f2;
   background-color: #ffffff;
   text-decoration: none;
+  transition: all 0.5s ease-in-out;
 
   &.active {
     font-weight: 600;
