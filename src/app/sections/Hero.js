@@ -167,9 +167,6 @@ const Heading = styled.h1`
   @media (max-width: 650px) {
     font-size: 30px;
   }
-  @media (max-width: 550px) {
-    font-size: 25px;
-  }
 `;
 
 const Description = styled.p`
