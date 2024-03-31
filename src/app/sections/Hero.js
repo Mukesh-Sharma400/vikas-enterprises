@@ -1,10 +1,20 @@
 import Link from "next/link";
 import Image from "next/image";
+import { useEffect } from "react";
 import styled from "styled-components";
 import backgroundImage from "../../../public/assets/hero-background.png";
 
 export const Hero = () => {
   const phoneNumber = "+917021739604";
+
+  useEffect(() => {
+    const tooltipTriggerList = [].slice.call(
+      document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    );
+    const tooltipList = tooltipTriggerList.map((tooltipTriggerEl) => {
+      return new window.bootstrap.Tooltip(tooltipTriggerEl);
+    });
+  }, []);
 
   const sectionData = {
     heading: "Elevating Spaces Crafting Dreams",
@@ -50,7 +60,7 @@ export const Hero = () => {
       <BackgroundImageWrapper>
         <BackgroundImage src={backgroundImage} alt="Background Image" />
       </BackgroundImageWrapper>
-      <ContentWrapper>
+      {/* <ContentWrapper>
         <InnerContentWrapper data-aos="fade-up">
           <Heading>{sectionData.heading}</Heading>
           <Description>{sectionData.description}</Description>
@@ -73,7 +83,7 @@ export const Hero = () => {
             ))}
           </SocialLinksWrapper>
         </InnerContentWrapper>
-      </ContentWrapper>
+      </ContentWrapper> */}
     </DisplayWrapper>
   );
 };
@@ -120,11 +130,6 @@ const ContentWrapper = styled.div`
   text-align: center;
   gap: 16px;
   transition: all 0.5s ease-in-out;
-
-  @media (max-width: 1024px) {
-    max-width: 90%;
-    left: 5%;
-  }
 `;
 
 const InnerContentWrapper = styled.div`
@@ -140,44 +145,17 @@ const InnerContentWrapper = styled.div`
 const Heading = styled.h1`
   font-size: 60px;
   color: white;
-  text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3),
-    0px -4px 10px rgba(255, 255, 255, 0.3);
+  filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04))
+    drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
   transition: all 0.5s ease-in-out;
-
-  @media (max-width: 550px) {
-    font-size: 40px;
-  }
-  @media (max-width: 490px) {
-    font-size: 35px;
-  }
-  @media (max-width: 430px) {
-    font-size: 30px;
-  }
-  @media (max-width: 366px) {
-    font-size: 28px;
-  }
-  @media (max-width: 342px) {
-    font-size: 26px;
-  }
-  @media (max-width: 300px) {
-    font-size: 22px;
-  }
 `;
 
 const Description = styled.p`
   font-size: 20px;
   color: white;
+  filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1))
+    drop-shadow(0 1px 1px rgb(0 0 0 / 0.06));
   transition: all 0.5s ease-in-out;
-
-  @media (max-width: 1024px) {
-    font-size: 15px;
-  }
-  @media (max-width: 768px) {
-    font-size: 13px;
-  }
-  @media (max-width: 426px) {
-    font-size: 12px;
-  }
 `;
 
 const ButtonsWrapper = styled.div`
@@ -196,13 +174,9 @@ const PrimaryBtn = styled.button`
   width: 180px;
   min-width: 180px;
   height: 50px;
+  filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1))
+    drop-shadow(0 1px 1px rgb(0 0 0 / 0.06));
   transition: all 0.5s ease-in-out;
-
-  &:hover {
-    letter-spacing: 2px;
-    transition-delay: 0s !important;
-    transition: all 0.5s ease-in-out !important;
-  }
 `;
 
 const SecondaryBtn = styled.button`
@@ -215,13 +189,9 @@ const SecondaryBtn = styled.button`
   width: 180px;
   min-width: 180px;
   height: 50px;
+  filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1))
+    drop-shadow(0 1px 1px rgb(0 0 0 / 0.06));
   transition: all 0.5s ease-in-out;
-
-  &:hover {
-    letter-spacing: 2px;
-    transition-delay: 0s !important;
-    transition: all 0.5s ease-in-out !important;
-  }
 `;
 
 const SocialLinksWrapper = styled.div`
@@ -244,5 +214,7 @@ const SocialLink = styled(Link)`
   border-radius: 50%;
   color: white;
   background-color: #1877f270;
+  filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1))
+    drop-shadow(0 1px 1px rgb(0 0 0 / 0.06));
   transition: all 0.5s ease-in-out;
 `;

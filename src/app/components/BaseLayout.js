@@ -9,7 +9,7 @@ export default function BaseLayout({ children }) {
     <DisplayWrapper>
       <Header />
       {children}
-      <Footer />
+      {/* <Footer /> */}
     </DisplayWrapper>
   );
 }
