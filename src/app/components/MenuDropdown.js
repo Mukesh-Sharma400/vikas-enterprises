@@ -51,6 +51,7 @@ export const MenuDropdown = ({ menuOpened, setMenuOpened }) => {
             {page.label}
           </Route>
         ))}
+        <ContactBtn>Contact</ContactBtn>
       </RoutesWrapper>
     </DisplayWrapper>
   );
@@ -82,6 +83,7 @@ const DisplayWrapper = styled.div`
 `;
 
 const RoutesWrapper = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -92,32 +94,26 @@ const RoutesWrapper = styled.div`
 `;
 
 const Route = styled(Link)`
-  position: relative;
-  font-size: 16px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
   color: #1877f2;
   text-decoration: none;
-  padding-bottom: 3px;
-
-  &:hover {
-    font-weight: 500;
-  }
 
   &.active {
     font-weight: 600;
   }
+`;
 
-  &::before {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 2px;
-    background-color: #1877f2;
-    width: 0;
-    transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
-  }
-
-  &:hover::before {
-    width: 100%;
-  }
+const ContactBtn = styled.button`
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  background-color: #1877f2;
+  border-radius: 15px;
+  width: 100%;
+  height: 40px;
+  transition: all 0.5s ease-in-out;
 `;
