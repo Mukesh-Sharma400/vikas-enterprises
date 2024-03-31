@@ -242,18 +242,18 @@ const SocialLinksWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 1rem;
   transition: all 0.5s ease-in-out;
 `;
 
 const SocialLink = styled(Link)`
-  width: 35px;
-  height: 35px;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 25px;
   border-radius: 50%;
   color: white;
   background-color: #1877f270;
