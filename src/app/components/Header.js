@@ -11,13 +11,30 @@ export const Header = () => {
   const pathName = usePathname();
   const [menuOpened, setMenuOpened] = useState(false);
   const [showContactPopup, setShowContactPopup] = useState(false);
+  const [pagesDropdown, setPagesDropdown] = useState(false);
+
+  const [opacity, setOpacity] = useState(false);
+
+  const handleCloseDropdown = () => {
+    setTimeout(() => {
+      setPagesDropdown(false);
+    }, 1000);
+    setOpacity(false);
+  };
+
+  const handleOpenDropdown = () => {
+    setTimeout(() => {
+      setOpacity(true);
+    }, 100);
+    setPagesDropdown(true);
+  };
 
   const routesData = [
-    { path: "/", label: "Home" },
-    { path: "/services", label: "Services" },
-    { path: "/projects", label: "Projects" },
-    { path: "/gallery", label: "Gallery" },
-    { path: "/aboutus", label: "About Us" },
+    { path: "/", label: "Home", width: 50 },
+    { path: "/services", label: "Services", width: 70 },
+    { path: "/projects", label: "Projects", width: 65 },
+    { path: "/gallery", label: "Gallery", width: 60 },
+    { path: "/aboutus", label: "About Us", width: 75 },
   ];
 
   const handleMenu = () => {
@@ -31,7 +48,7 @@ export const Header = () => {
           <RoutesWrapper>
             {routesData.map((page, index) => (
               <Route
-                key={page.path}
+                key={index}
                 href={page.path}
                 className={pathName === page.path ? "active" : ""}
                 data-aos="fade-right"
@@ -40,6 +57,32 @@ export const Header = () => {
                 {page.label}
               </Route>
             ))}
+            <PagesDropdownWrapper>
+              <PagesDropdown
+                data-aos="fade-right"
+                onClick={
+                  pagesDropdown ? handleCloseDropdown : handleOpenDropdown
+                }
+              >
+                All Pages <i class="bi bi-caret-down-fill"></i>
+              </PagesDropdown>
+              {pagesDropdown ? (
+                <PagesDropdownContentWrapper opacity={opacity}>
+                  {routesData.map((page, index) => (
+                    <Route2
+                      key={index}
+                      href={page.path}
+                      className={pathName === page.path ? "active" : ""}
+                      data-aos="fade-down"
+                      data-aos-delay={`${(index + 1) * 100}`}
+                      style={{ width: page.width }}
+                    >
+                      {page.label}
+                    </Route2>
+                  ))}
+                </PagesDropdownContentWrapper>
+              ) : null}
+            </PagesDropdownWrapper>
           </RoutesWrapper>
           <LogoNameWrapper href="/">
             <Logo src={logo} alt="Vikas Enterprises" />
@@ -273,4 +316,55 @@ const Button = styled.button`
     --rotate-bar-one: 45deg;
     --rotate-bar-three: -45deg;
   `}
+`;
+
+const PagesDropdownWrapper = styled.div`
+  position: relative;
+  display: none;
+
+  @media (max-width: 1200px) {
+    display: block;
+  }
+`;
+
+const PagesDropdown = styled.p`
+  font-size: 16px;
+  color: #1877f2;
+  cursor: pointer;
+`;
+
+const PagesDropdownContentWrapper = styled.div`
+  position: absolute;
+  top: 60px;
+  left: 0px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 10px;
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 4px 30px rgba(225, 225, 225, 0.5);
+  backdrop-filter: blur(10.1px);
+  -webkit-backdrop-filter: blur(10.1px);
+  border: 1px solid rgba(225, 225, 225, 1);
+  opacity: ${(props) => (props.opacity === false ? 0 : 1)};
+  z-index: 2;
+  transition: all 0.5s ease-in-out;
+`;
+
+const Route2 = styled(Link)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: #1877f2;
+  text-decoration: none;
+
+  &:hover {
+    font-weight: 500;
+  }
+
+  &.active {
+    font-weight: 600;
+  }
 `;
