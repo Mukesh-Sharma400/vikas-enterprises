@@ -60,7 +60,7 @@ export const Hero = () => {
       <BackgroundImageWrapper>
         <BackgroundImage src={backgroundImage} alt="Background Image" />
       </BackgroundImageWrapper>
-      {/* <ContentWrapper>
+      <ContentWrapper>
         <InnerContentWrapper data-aos="fade-up">
           <Heading>{sectionData.heading}</Heading>
           <Description>{sectionData.description}</Description>
@@ -83,7 +83,7 @@ export const Hero = () => {
             ))}
           </SocialLinksWrapper>
         </InnerContentWrapper>
-      </ContentWrapper> */}
+      </ContentWrapper>
     </DisplayWrapper>
   );
 };
@@ -148,6 +148,31 @@ const Heading = styled.h1`
   filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04))
     drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
   transition: all 0.5s ease-in-out;
+
+  @media (max-width: 1200px) {
+    font-size: 55px;
+  }
+  @media (max-width: 1050px) {
+    font-size: 50px;
+  }
+  @media (max-width: 950px) {
+    font-size: 45px;
+  }
+  @media (max-width: 850px) {
+    font-size: 40px;
+  }
+  @media (max-width: 768px) {
+    font-size: 35px;
+  }
+  @media (max-width: 650px) {
+    font-size: 30px;
+  }
+  @media (max-width: 550px) {
+    font-size: 25px;
+  }
+  @media (max-width: 425px) {
+    font-size: 23px;
+  }
 `;
 
 const Description = styled.p`
@@ -156,6 +181,19 @@ const Description = styled.p`
   filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1))
     drop-shadow(0 1px 1px rgb(0 0 0 / 0.06));
   transition: all 0.5s ease-in-out;
+
+  @media (max-width: 1050px) {
+    max-width: 500px;
+    font-size: 18px;
+  }
+  @media (max-width: 768px) {
+    max-width: 400px;
+    font-size: 15px;
+  }
+  @media (max-width: 426px) {
+    max-width: 330px;
+    font-size: 13px;
+  }
 `;
 
 const ButtonsWrapper = styled.div`
@@ -163,6 +201,10 @@ const ButtonsWrapper = styled.div`
   align-items: center;
   justify-content: center;
   gap: 2rem;
+
+  @media (max-width: 426px) {
+    gap: 1rem;
+  }
 `;
 
 const PrimaryBtn = styled.button`
@@ -177,6 +219,19 @@ const PrimaryBtn = styled.button`
   filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1))
     drop-shadow(0 1px 1px rgb(0 0 0 / 0.06));
   transition: all 0.5s ease-in-out;
+
+  @media (max-width: 768px) {
+    width: 150px;
+    min-width: 150px;
+    height: 45px;
+    font-size: 18px;
+  }
+  @media (max-width: 426px) {
+    width: 130px;
+    min-width: 130px;
+    height: 40px;
+    font-size: 15px;
+  }
 `;
 
 const SecondaryBtn = styled.button`
@@ -192,6 +247,19 @@ const SecondaryBtn = styled.button`
   filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1))
     drop-shadow(0 1px 1px rgb(0 0 0 / 0.06));
   transition: all 0.5s ease-in-out;
+
+  @media (max-width: 768px) {
+    width: 150px;
+    min-width: 150px;
+    height: 45px;
+    font-size: 18px;
+  }
+  @media (max-width: 426px) {
+    width: 130px;
+    min-width: 130px;
+    height: 40px;
+    font-size: 15px;
+  }
 `;
 
 const SocialLinksWrapper = styled.div`
