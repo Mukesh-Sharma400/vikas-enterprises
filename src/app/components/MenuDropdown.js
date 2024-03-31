@@ -1,11 +1,13 @@
-import Link from "next/link";
 import styled from "styled-components";
-import { useEffect, useRef } from "react";
-import { usePathname } from "next/navigation";
+import { ContactPopup } from "./ContactPopup";
+import { useEffect, useRef, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 
 export const MenuDropdown = ({ menuOpened, setMenuOpened }) => {
   const menuRef = useRef();
+  const router = useRouter();
   const pathName = usePathname();
+  const [showContactPopup, setShowContactPopup] = useState(false);
 
   const routesData = [
     { path: "/", label: "Home" },
@@ -39,21 +41,42 @@ export const MenuDropdown = ({ menuOpened, setMenuOpened }) => {
     };
   }, [menuOpened]);
 
+  const handleRouteClick = ({ page }) => {
+    setTimeout(() => {
+      router.push(page);
+    }, 500);
+    setMenuOpened(false);
+  };
+
+  const handleButtonClick = () => {
+    setMenuOpened(false);
+    setShowContactPopup(true);
+  };
+
   return (
-    <DisplayWrapper ref={menuRef} menuOpened={menuOpened}>
-      <RoutesWrapper>
-        {routesData.map((page, index) => (
-          <Route
-            key={page.path}
-            href={page.path}
-            className={pathName === page.path ? "active" : ""}
-          >
-            {page.label}
-          </Route>
-        ))}
-        <ContactBtn>Contact</ContactBtn>
-      </RoutesWrapper>
-    </DisplayWrapper>
+    <>
+      <DisplayWrapper ref={menuRef} menuOpened={menuOpened}>
+        <RoutesWrapper>
+          {routesData.map((page, index) => (
+            <Route
+              key={index}
+              className={pathName === page.path ? "active" : ""}
+              onClick={() => handleRouteClick({ page: page.path })}
+            >
+              {page.label}
+            </Route>
+          ))}
+          <ContactBtn onClick={handleButtonClick}>Contact</ContactBtn>
+        </RoutesWrapper>
+      </DisplayWrapper>
+      {showContactPopup && (
+        <ContactPopup
+          handleClose={() => {
+            setShowContactPopup(false);
+          }}
+        />
+      )}
+    </>
   );
 };
 
@@ -93,13 +116,15 @@ const RoutesWrapper = styled.div`
   transition: all 0.5s ease-in-out;
 `;
 
-const Route = styled(Link)`
+const Route = styled.button`
+  width: 100%;
   height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 18px;
   color: #1877f2;
+  background-color: #ffffff;
   text-decoration: none;
 
   &.active {

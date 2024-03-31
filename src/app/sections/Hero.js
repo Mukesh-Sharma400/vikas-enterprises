@@ -1,11 +1,37 @@
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect } from "react";
+import copy from "clipboard-copy";
 import styled from "styled-components";
+import { Toast } from "../components/Toast";
+import { useEffect, useRef, useState } from "react";
 import backgroundImage from "../../../public/assets/hero-background.png";
 
 export const Hero = () => {
+  const timeoutRef = useRef(null);
   const phoneNumber = "+917021739604";
+  const emailAddress = "mksh400@gmail.com";
+  const [toast, setToast] = useState({ visible: false, message: "" });
+
+  const showToastMethod = (message) => {
+    setToast({ visible: true, message });
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+    timeoutRef.current = setTimeout(() => {
+      setToast({ visible: false, message: "" });
+    }, 3000);
+  };
+
+  const handleOpenDialer = () => {
+    const telUrl = `tel:${phoneNumber}`;
+    window.location.href = telUrl;
+  };
+
+  const handleCopyEmail = () => {
+    const emailToCopy = `${emailAddress}`;
+    copy(emailToCopy);
+    showToastMethod("Email copied to clipboard");
+  };
 
   useEffect(() => {
     const tooltipTriggerList = [].slice.call(
@@ -57,6 +83,9 @@ export const Hero = () => {
 
   return (
     <DisplayWrapper>
+      <ToastWrapper showToast={toast.visible}>
+        <Toast message={toast.message} />
+      </ToastWrapper>
       <BackgroundImageWrapper>
         <BackgroundImage src={backgroundImage} alt="Background Image" />
       </BackgroundImageWrapper>
@@ -65,8 +94,8 @@ export const Hero = () => {
           <Heading>{sectionData.heading}</Heading>
           <Description>{sectionData.description}</Description>
           <ButtonsWrapper>
-            <PrimaryBtn>Call Now</PrimaryBtn>
-            <SecondaryBtn>Copy Email</SecondaryBtn>
+            <PrimaryBtn onClick={handleOpenDialer}>Call Now</PrimaryBtn>
+            <SecondaryBtn onClick={handleCopyEmail}>Copy Email</SecondaryBtn>
           </ButtonsWrapper>
           <SocialLinksWrapper>
             {socialLinks.map((link, index) => (
@@ -93,6 +122,15 @@ const DisplayWrapper = styled.div`
   height: 100vh;
   max-height: 850px;
   position: relative;
+  transition: all 0.5s ease-in-out;
+`;
+
+const ToastWrapper = styled.div`
+  position: fixed;
+  top: ${(props) => (props.showToast ? "10%" : "-20%")};
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
   transition: all 0.5s ease-in-out;
 `;
 

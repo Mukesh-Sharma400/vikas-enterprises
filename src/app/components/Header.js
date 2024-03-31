@@ -4,11 +4,13 @@ import { useState } from "react";
 import styled from "styled-components";
 import { usePathname } from "next/navigation";
 import { MenuDropdown } from "./MenuDropdown";
+import { ContactPopup } from "./ContactPopup";
 import logo from "../../../public/assets/logo.png";
 
 export const Header = () => {
   const pathName = usePathname();
   const [menuOpened, setMenuOpened] = useState(false);
+  const [showContactPopup, setShowContactPopup] = useState(false);
 
   const routesData = [
     { path: "/", label: "Home" },
@@ -46,7 +48,13 @@ export const Header = () => {
             </Name>
           </LogoNameWrapper>
           <ButtonsWrapper>
-            <ContactBtn data-aos="fade-right" data-aos-delay="600">
+            <ContactBtn
+              data-aos="fade-right"
+              data-aos-delay="600"
+              onClick={() => {
+                setShowContactPopup(true);
+              }}
+            >
               Contact
             </ContactBtn>
             <Button onClick={handleMenu} menuOpened={menuOpened}>
@@ -58,6 +66,13 @@ export const Header = () => {
         </ContentWrapper>
       </DisplayWrapper>
       <MenuDropdown menuOpened={menuOpened} setMenuOpened={setMenuOpened} />
+      {showContactPopup && (
+        <ContactPopup
+          handleClose={() => {
+            setShowContactPopup(false);
+          }}
+        />
+      )}
     </>
   );
 };
