@@ -170,9 +170,6 @@ const Heading = styled.h1`
   @media (max-width: 550px) {
     font-size: 25px;
   }
-  @media (max-width: 425px) {
-    font-size: 23px;
-  }
 `;
 
 const Description = styled.p`
@@ -189,10 +186,6 @@ const Description = styled.p`
   @media (max-width: 768px) {
     max-width: 400px;
     font-size: 15px;
-  }
-  @media (max-width: 426px) {
-    max-width: 330px;
-    font-size: 13px;
   }
 `;
 
@@ -226,12 +219,6 @@ const PrimaryBtn = styled.button`
     height: 45px;
     font-size: 18px;
   }
-  @media (max-width: 426px) {
-    width: 130px;
-    min-width: 130px;
-    height: 40px;
-    font-size: 15px;
-  }
 `;
 
 const SecondaryBtn = styled.button`
@@ -253,12 +240,6 @@ const SecondaryBtn = styled.button`
     min-width: 150px;
     height: 45px;
     font-size: 18px;
-  }
-  @media (max-width: 426px) {
-    width: 130px;
-    min-width: 130px;
-    height: 40px;
-    font-size: 15px;
   }
 `;
 
