@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useState } from "react";
 import styled from "styled-components";
 import { usePathname } from "next/navigation";
+import { MenuDropdown } from "./MenuDropdown";
 import logo from "../../../public/assets/logo.png";
 
 export const Header = () => {
@@ -22,39 +23,42 @@ export const Header = () => {
   };
 
   return (
-    <DisplayWrapper>
-      <ContentWrapper>
-        <RoutesWrapper>
-          {routesData.map((page, index) => (
-            <Route
-              key={page.path}
-              href={page.path}
-              className={pathName === page.path ? "active" : ""}
-              data-aos="fade-right"
-              data-aos-delay={`${(index + 1) * 100}`}
-            >
-              {page.label}
-            </Route>
-          ))}
-        </RoutesWrapper>
-        <LogoNameWrapper href="/">
-          <Logo src={logo} alt="Vikas Enterprises" />
-          <Name data-aos="fade-right" data-aos-delay="500">
-            Vikas Enterprises
-          </Name>
-        </LogoNameWrapper>
-        <ButtonsWrapper>
-          <ContactBtn data-aos="fade-right" data-aos-delay="600">
-            Contact
-          </ContactBtn>
-          <Button onClick={handleMenu} menuOpened={menuOpened}>
-            <div className="bar bar--1"></div>
-            <div className="bar bar--2"></div>
-            <div className="bar bar--3"></div>
-          </Button>
-        </ButtonsWrapper>
-      </ContentWrapper>
-    </DisplayWrapper>
+    <>
+      <DisplayWrapper>
+        <ContentWrapper>
+          <RoutesWrapper>
+            {routesData.map((page, index) => (
+              <Route
+                key={page.path}
+                href={page.path}
+                className={pathName === page.path ? "active" : ""}
+                data-aos="fade-right"
+                data-aos-delay={`${(index + 1) * 100}`}
+              >
+                {page.label}
+              </Route>
+            ))}
+          </RoutesWrapper>
+          <LogoNameWrapper href="/">
+            <Logo src={logo} alt="Vikas Enterprises" />
+            <Name data-aos="fade-right" data-aos-delay="500">
+              Vikas Enterprises
+            </Name>
+          </LogoNameWrapper>
+          <ButtonsWrapper>
+            <ContactBtn data-aos="fade-right" data-aos-delay="600">
+              Contact
+            </ContactBtn>
+            <Button onClick={handleMenu} menuOpened={menuOpened}>
+              <div className="bar bar--1"></div>
+              <div className="bar bar--2"></div>
+              <div className="bar bar--3"></div>
+            </Button>
+          </ButtonsWrapper>
+        </ContentWrapper>
+      </DisplayWrapper>
+      <MenuDropdown menuOpened={menuOpened} setMenuOpened={setMenuOpened} />
+    </>
   );
 };
 
