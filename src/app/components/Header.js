@@ -207,10 +207,6 @@ const Route = styled(Link)`
   text-decoration: none;
   padding-bottom: 3px;
 
-  &:hover {
-    font-weight: 500;
-  }
-
   &.active {
     font-weight: 600;
   }
