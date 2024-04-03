@@ -4,6 +4,7 @@ import copy from "clipboard-copy";
 import styled from "styled-components";
 import { Toast } from "../components/Toast";
 import { useEffect, useRef, useState } from "react";
+import CircularText from "../components/CircularRotatingText";
 import backgroundImage from "../../../public/assets/hero-background.png";
 
 export const Hero = () => {
@@ -91,6 +92,12 @@ export const Hero = () => {
       </BackgroundImageWrapper>
       <ContentWrapper>
         <InnerContentWrapper data-aos="fade-up">
+          <CircularRotatingTextWrapper
+            data-aos="zoom-out"
+            data-aos-delay="1000"
+          >
+            <CircularText />
+          </CircularRotatingTextWrapper>
           <Heading>{sectionData.heading}</Heading>
           <Description>{sectionData.description}</Description>
           <ButtonsWrapper>
@@ -171,6 +178,7 @@ const ContentWrapper = styled.div`
 `;
 
 const InnerContentWrapper = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -298,4 +306,24 @@ const SocialLink = styled(Link)`
   filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1))
     drop-shadow(0 1px 1px rgb(0 0 0 / 0.06));
   transition: all 0.5s ease-in-out;
+`;
+
+const CircularRotatingTextWrapper = styled.div`
+  position: absolute;
+  top: 40px;
+  right: 20px;
+  transition: all 0.5s ease-in-out;
+
+  @media (max-width: 675px) {
+    right: 40px;
+  }
+  @media (max-width: 635px) {
+    right: 50px;
+  }
+  @media (max-width: 600px) {
+    right: 60px;
+  }
+  @media (max-width: 450px) {
+    right: 80px;
+  }
 `;

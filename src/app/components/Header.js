@@ -1,13 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
 import styled from "styled-components";
 import { usePathname } from "next/navigation";
 import { MenuDropdown } from "./MenuDropdown";
 import { ContactPopup } from "./ContactPopup";
 import logo from "../../../public/assets/logo.png";
+import { useEffect, useRef, useState } from "react";
 
 export const Header = () => {
+  const menuRef = useRef();
   const pathName = usePathname();
   const [menuOpened, setMenuOpened] = useState(false);
   const [showContactPopup, setShowContactPopup] = useState(false);
@@ -28,6 +29,30 @@ export const Header = () => {
     }, 100);
     setPagesDropdown(true);
   };
+
+  useEffect(() => {
+    const handleDocumentClick = (event) => {
+      if (
+        pagesDropdown &&
+        menuRef.current &&
+        !menuRef.current.contains(event.target)
+      ) {
+        handleCloseDropdown();
+      }
+    };
+
+    const handleScroll = () => {
+      handleCloseDropdown();
+    };
+
+    document.addEventListener("click", handleDocumentClick);
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      document.removeEventListener("click", handleDocumentClick);
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [pagesDropdown]);
 
   const routesData = [
     { path: "/", label: "Home", width: 50 },
@@ -67,7 +92,7 @@ export const Header = () => {
                 All Pages <i class="bi bi-caret-down-fill"></i>
               </PagesDropdown>
               {pagesDropdown ? (
-                <PagesDropdownContentWrapper opacity={opacity}>
+                <PagesDropdownContentWrapper ref={menuRef} opacity={opacity}>
                   {routesData.map((page, index) => (
                     <Route2
                       key={index}
@@ -201,29 +226,16 @@ const RoutesWrapper = styled.div`
 `;
 
 const Route = styled(Link)`
-  position: relative;
   font-size: 16px;
   color: #1877f2;
   text-decoration: none;
-  padding-bottom: 3px;
+
+  &:hover {
+    font-weight: 500;
+  }
 
   &.active {
     font-weight: 600;
-  }
-
-  &::before {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 2px;
-    background-color: #1877f2;
-    width: 0;
-    transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
-  }
-
-  &:hover::before {
-    width: 100%;
   }
 
   @media (max-width: 1200px) {
