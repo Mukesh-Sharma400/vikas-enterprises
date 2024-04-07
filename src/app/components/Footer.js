@@ -78,62 +78,6 @@ export const Footer = () => {
 
   return (
     <DisplayWrapper>
-      <ColumnsWrapper>
-        <Column1>
-          <LogoNameWrapper href="/" data-aos="fade-up">
-            <Logo src={logo} alt="MJ Interior" />
-            <Name>Vikas Enterprises</Name>
-          </LogoNameWrapper>
-          <Description data-aos="fade-up">
-            {sectionData.description}
-          </Description>
-          <SocialLinksWrapper>
-            {socialLinks.map((link, index) => (
-              <SocialLink
-                key={index}
-                className={link.className}
-                href={link.href}
-                target="_blank"
-                data-bs-toggle="tooltip"
-                data-bs-title={link.tooltip}
-                data-bs-custom-class="custom-tooltip"
-                aria-label={link.ariaLabel}
-                data-aos="fade-right"
-                data-aos-delay={`${(index + 1) * 100}`}
-              ></SocialLink>
-            ))}
-          </SocialLinksWrapper>
-        </Column1>
-        <Column2>
-          <SectionHeading>Pages</SectionHeading>
-          <PagesWrapper>
-            {routesData.map((page, index) => (
-              <Page
-                key={page.path}
-                href={page.path}
-                data-aos="fade-up"
-                data-aos-delay={`${(index + 1) * 100}`}
-              >
-                {page.label}
-              </Page>
-            ))}
-          </PagesWrapper>
-        </Column2>
-        <Column3>
-          <SectionHeading>Services</SectionHeading>
-          <ServicesWrapper>
-            {servicesData.map((service, index) => (
-              <Service
-                key={index}
-                data-aos="fade-up"
-                data-aos-delay={`${(index + 1) * 100}`}
-              >
-                <i className="bi bi-check2-circle"></i> {service}
-              </Service>
-            ))}
-          </ServicesWrapper>
-        </Column3>
-      </ColumnsWrapper>
       <BottomWrapper>
         <LeftSide>
           <p>

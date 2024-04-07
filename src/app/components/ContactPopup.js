@@ -216,6 +216,7 @@ const Label = styled.label`
   font-size: 18px;
   line-height: 18px;
   font-weight: 500;
+  color: #1877f2;
   transition: all 0.5s ease-in-out;
 
   @media (max-width: 768px) {
@@ -296,6 +297,7 @@ const EmailPhoneWrapper = styled.div`
 const Button = styled.button`
   font-size: 20px;
   font-weight: 600;
+  text-transform: uppercase;
   color: white;
   background-color: #1877f2;
   border-radius: 10px;

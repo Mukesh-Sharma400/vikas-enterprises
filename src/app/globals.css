@@ -11,6 +11,19 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(200, 200, 200);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(154, 154, 154);
+}
+
 .secondary-font {
   font-family: "DM Mono", monospace;
 }
@@ -37,6 +50,7 @@ textarea {
 }
 
 .custom-tooltip {
-  --bs-tooltip-bg: #ffffff;
-  --bs-tooltip-color: #1877f2;
+  font-weight: 500 !important;
+  --bs-tooltip-bg: #ffffff !important;
+  --bs-tooltip-color: #1877f2 !important;
 }
