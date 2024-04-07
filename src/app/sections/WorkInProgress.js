@@ -46,7 +46,7 @@ const ContentWrapper = styled.div`
 `;
 
 const Message = styled.p`
-  max-width: 370px;
+  max-width: 420px;
   font-size: 60px;
   color: #1877f2;
   filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.05))
