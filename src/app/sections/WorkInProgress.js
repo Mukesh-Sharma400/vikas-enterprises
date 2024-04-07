@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const WorkInProgress = () => {
   return (
     <DisplayWrapper>
-      <ContentWrapper>
+      <ContentWrapper data-aos="fade-up">
         <Message>Page Is Under Development</Message>
         <Button>Go to Home</Button>
       </ContentWrapper>
@@ -18,6 +18,10 @@ const DisplayWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  background-image: url("/assets/under-construction.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
   transition: all 0.5s ease-in-out;
 `;
 
@@ -30,18 +34,20 @@ const ContentWrapper = styled.div`
   justify-content: center;
   padding: 50px 5%;
   gap: 1rem;
-  background-image: url("/assets/under-construction.svg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
+  transition: all 0.5s ease-in-out;
+
+  @media (max-width: 768px) {
+    align-items: center;
+    text-align: center;
+  }
 `;
 
 const Message = styled.p`
   max-width: 370px;
   font-size: 60px;
   color: #1877f2;
-  filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04))
-    drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
+  filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.05))
+    drop-shadow(0 4px 3px rgb(0 0 0 / 0.2));
   transition: all 0.5s ease-in-out;
 
   @media (max-width: 1200px) {
