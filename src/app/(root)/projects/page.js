@@ -1,11 +1,12 @@
 "use client";
 
 import BaseLayout from "@/app/components/BaseLayout";
+import { WorkInProgress } from "@/app/sections/WorkInProgress";
 
 export default function Projects() {
   return (
     <BaseLayout>
-      <h1>Projects</h1>
+      <WorkInProgress />
     </BaseLayout>
   );
 }

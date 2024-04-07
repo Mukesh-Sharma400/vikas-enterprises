@@ -1,11 +1,12 @@
 "use client";
 
 import BaseLayout from "@/app/components/BaseLayout";
+import { WorkInProgress } from "@/app/sections/WorkInProgress";
 
 export default function AboutUs() {
   return (
     <BaseLayout>
-      <h1>AboutUs</h1>
+      <WorkInProgress />
     </BaseLayout>
   );
 }

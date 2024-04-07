@@ -1,11 +1,14 @@
 import styled from "styled-components";
+import { useRouter } from "next/navigation";
 
 export const WorkInProgress = () => {
+  const router = useRouter();
+
   return (
     <DisplayWrapper>
       <ContentWrapper data-aos="fade-up">
         <Message>Page Is Under Development</Message>
-        <Button>Go to Home</Button>
+        <Button onClick={() => router.push("/")}>Go to Home</Button>
       </ContentWrapper>
     </DisplayWrapper>
   );
