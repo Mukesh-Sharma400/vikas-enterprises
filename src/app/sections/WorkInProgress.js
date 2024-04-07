@@ -1,6 +1,4 @@
-import Image from "next/image";
 import styled from "styled-components";
-import underConstruction from "../../../public/assets/under-construction.svg";
 
 export const WorkInProgress = () => {
   return (
@@ -9,10 +7,6 @@ export const WorkInProgress = () => {
         <Message>Page Is Under Development</Message>
         <Button>Go to Home</Button>
       </ContentWrapper>
-      <UnderConstructionImage
-        src={underConstruction}
-        alt="Under Construction"
-      />
     </DisplayWrapper>
   );
 };
@@ -24,45 +18,22 @@ const DisplayWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 50px 5%;
   transition: all 0.5s ease-in-out;
-
-  @media (max-width: 768px) {
-    flex-direction: column-reverse;
-    position: relative;
-    gap: 2rem;
-  }
-`;
-
-const UnderConstructionImage = styled(Image)`
-  width: 65%;
-  height: auto;
-  transition: all 0.5s ease-in-out;
-
-  @media (max-width: 768px) {
-    width: auto;
-    height: 50%;
-    position: absolute;
-    bottom: 50px;
-    right: 5%;
-  }
 `;
 
 const ContentWrapper = styled.div`
-  width: 35%;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: start;
   justify-content: center;
+  padding: 50px 5%;
   gap: 1rem;
-
-  @media (max-width: 768px) {
-    width: fit-content;
-    position: absolute;
-    top: 15%;
-    left: 5%;
-    z-index: 1;
-  }
+  background-image: url("/assets/under-construction.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
 `;
 
 const Message = styled.p`
