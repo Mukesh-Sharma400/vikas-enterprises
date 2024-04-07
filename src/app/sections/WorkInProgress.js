@@ -41,7 +41,7 @@ const UnderConstructionImage = styled(Image)`
 
   @media (max-width: 768px) {
     width: auto;
-    height: 100%;
+    height: 50%;
     position: absolute;
     bottom: 50px;
     right: 5%;
