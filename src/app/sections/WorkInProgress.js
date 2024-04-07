@@ -40,7 +40,8 @@ const UnderConstructionImage = styled(Image)`
   transition: all 0.5s ease-in-out;
 
   @media (max-width: 768px) {
-    width: 100%;
+    width: auto;
+    height: 100%;
     position: absolute;
     bottom: 50px;
     right: 5%;
