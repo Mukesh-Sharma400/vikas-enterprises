@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect } from "react";
 import styled from "styled-components";
 import logo from "../../../public/assets/logo.png";
 
@@ -8,19 +7,34 @@ export const Footer = () => {
   const phoneNumber = "+917021739604";
   const currentYear = new Date().getFullYear();
 
-  useEffect(() => {
-    const tooltipTriggerList = [].slice.call(
-      document.querySelectorAll('[data-bs-toggle="tooltip"]')
-    );
-    const tooltipList = tooltipTriggerList.map((tooltipTriggerEl) => {
-      return new window.bootstrap.Tooltip(tooltipTriggerEl);
-    });
-  }, []);
-
   const sectionData = {
     description:
       "Vikas Enterprises, founded in 2001, has become a trusted leader in Navi Mumbai's renovation scene. We specialize in all aspects of interior decoration, from Ghansoli to beyond.",
   };
+
+  const addressData = [
+    {
+      className: "bi bi-geo-alt-fill",
+      href: "https://maps.google.com?q=Ghansoli, Navi Mumbai",
+      tooltip: "Address",
+      ariaLabel: "Address",
+      data: "Ghansoli, Navi Mumbai",
+    },
+    {
+      className: "bi bi-telephone-fill",
+      href: "tel:+917021739604",
+      tooltip: "Phone",
+      ariaLabel: "Phone",
+      data: "+91 7021739604",
+    },
+    {
+      className: "bi bi-envelope-at-fill",
+      href: "mailto:mksh400@gmail.com",
+      tooltip: "Email",
+      ariaLabel: "Email",
+      data: "mksh400@gmail.com",
+    },
+  ];
 
   const socialLinks = [
     {
@@ -78,6 +92,71 @@ export const Footer = () => {
 
   return (
     <DisplayWrapper>
+      <ColumnsWrapper>
+        <ContactColumn>
+          <ContactSentence>Ready To Build Your Dream Home?</ContactSentence>
+          <ContactBtn>Contact Now</ContactBtn>
+        </ContactColumn>
+        <ServicesColumn>
+          <SectionHeading>Services</SectionHeading>
+          <ServicesWrapper>
+            {servicesData.map((service, index) => (
+              <Service key={index}>
+                <i class="bi bi-check-circle"></i> {service}
+              </Service>
+            ))}
+          </ServicesWrapper>
+        </ServicesColumn>
+        <PagesColumn>
+          <SectionHeading>Pages</SectionHeading>
+          <PagesWrapper>
+            {routesData.map((page) => (
+              <Page key={page.path} href={page.path}>
+                {page.label}
+              </Page>
+            ))}
+          </PagesWrapper>
+        </PagesColumn>
+      </ColumnsWrapper>
+      <ColumnsWrapper>
+        <NameColumn>
+          <LogoNameWrapper href="/">
+            <Logo src={logo} alt="Vikas Enterprises" />
+            <Name>
+              Vikas
+              <br />
+              Enterprises
+            </Name>
+          </LogoNameWrapper>
+          <Description>{sectionData.description}</Description>
+        </NameColumn>
+        <AddressColumn>
+          <SocialLinksWrapper>
+            {addressData.map((link, index) => (
+              <SocialLink key={index} href={link.href} target="_blank">
+                <SocialIcon
+                  className={link.className}
+                  aria-label={link.ariaLabel}
+                />
+                {link.data}
+              </SocialLink>
+            ))}
+          </SocialLinksWrapper>
+        </AddressColumn>
+        <SocialColumn>
+          <SocialLinksWrapper>
+            {socialLinks.map((link, index) => (
+              <SocialLink key={index} href={link.href} target="_blank">
+                <SocialIcon
+                  className={link.className}
+                  aria-label={link.ariaLabel}
+                />
+                {link.ariaLabel}
+              </SocialLink>
+            ))}
+          </SocialLinksWrapper>
+        </SocialColumn>
+      </ColumnsWrapper>
       <BottomWrapper>
         <LeftSide>
           <p>
@@ -123,7 +202,14 @@ const ColumnsWrapper = styled.div`
   }
 `;
 
-const Column1 = styled.div`
+const SectionHeading = styled.p`
+  font-size: 25px;
+  color: white;
+  margin-bottom: 10px;
+  transition: all 0.5s ease-in-out;
+`;
+
+const ContactColumn = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -134,6 +220,112 @@ const Column1 = styled.div`
   @media (max-width: 768px) {
     width: 85%;
   }
+
+  @media (max-width: 426px) {
+    width: 100%;
+  }
+`;
+
+const ContactSentence = styled.p`
+  font-size: 36px;
+  font-weight: 600;
+  color: white;
+  transition: all 0.5s ease-in-out;
+`;
+
+const ContactBtn = styled.button`
+  font-size: 20px;
+  font-weight: 600;
+  color: #1877f2;
+  background-color: white;
+  border-radius: 40px;
+  width: 220px;
+  height: 50px;
+  transition: all 0.5s ease-in-out;
+`;
+
+const ServicesColumn = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 10px;
+  transition: all 0.5s ease-in-out;
+
+  @media (max-width: 426px) {
+    width: 100%;
+  }
+`;
+
+const ServicesWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  transition: all 0.5s ease-in-out;
+`;
+
+const Service = styled.div`
+  width: 50%;
+  font-size: 15px;
+  display: flex;
+  gap: 5px;
+  padding: 10px 0px;
+  color: white;
+  transition: all 0.5s ease-in-out;
+
+  @media (max-width: 950px) {
+    font-size: 13px;
+  }
+`;
+
+const PagesColumn = styled.div`
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 10px;
+  transition: all 0.5s ease-in-out;
+
+  @media (max-width: 768px) {
+    width: 35%;
+  }
+
+  @media (max-width: 426px) {
+    width: 100%;
+  }
+`;
+
+const PagesWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  transition: all 0.5s ease-in-out;
+`;
+
+const Page = styled(Link)`
+  width: 100%;
+  font-size: 15px;
+  display: flex;
+  gap: 5px;
+  padding: 10px 0px;
+  color: white;
+  text-decoration: none;
+  transition: all 0.5s ease-in-out;
+
+  &:hover {
+    font-weight: 500;
+  }
+
+  @media (max-width: 950px) {
+    font-size: 13px;
+  }
+`;
+
+const NameColumn = styled.div`
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 10px;
+  transition: all 0.5s ease-in-out;
 
   @media (max-width: 426px) {
     width: 100%;
@@ -156,6 +348,7 @@ const Logo = styled(Image)`
 const Name = styled.p`
   font-size: 32px;
   font-weight: 600;
+  line-height: 33px;
   color: white;
   transition: all 0.5s ease-in-out;
 `;
@@ -170,121 +363,66 @@ const Description = styled.p`
   }
 `;
 
+const AddressColumn = styled.div`
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 10px;
+  transition: all 0.5s ease-in-out;
+
+  @media (max-width: 426px) {
+    width: 100%;
+  }
+`;
+
+const SocialColumn = styled.div`
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 10px;
+  transition: all 0.5s ease-in-out;
+
+  @media (max-width: 426px) {
+    width: 100%;
+  }
+`;
+
 const SocialLinksWrapper = styled.div`
   width: 100%;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: 10px;
   transition: all 0.5s ease-in-out;
 `;
 
 const SocialLink = styled(Link)`
-  width: 35px;
-  height: 35px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-size: 15px;
+  color: white;
+  transition: all 0.5s ease-in-out;
+
+  &:hover {
+    font-weight: 500;
+  }
+`;
+
+const SocialIcon = styled.i`
+  width: 30px;
+  height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 18px;
   border-radius: 50%;
   color: white;
   background-color: rgba(255, 255, 255, 0.2);
   transition: all 0.5s ease-in-out;
-`;
-
-const SectionHeading = styled.p`
-  font-size: 25px;
-  color: white;
-  margin-bottom: 10px;
-  transition: all 0.5s ease-in-out;
-`;
-
-const Column2 = styled.div`
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  gap: 10px;
-  transition: all 0.5s ease-in-out;
-
-  @media (max-width: 768px) {
-    width: 35%;
-  }
-`;
-
-const PagesWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  transition: all 0.5s ease-in-out;
-`;
-
-const Page = styled(Link)`
-  position: relative;
-  width: 100%;
-  font-size: 15px;
-  display: flex;
-  gap: 5px;
-  padding: 10px 0px;
-  color: white;
-  text-decoration: none;
-  transition: all 0.5s ease-in-out;
-  border-bottom: 1px solid transparent;
-
-  &:hover {
-    font-weight: 500;
-    letter-spacing: 1.5px;
-    transition-delay: 0s !important;
-    transition: all 0.5s ease-in-out !important;
-  }
-
-  &::before {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 1px;
-    background-color: transparent;
-    width: 0;
-    transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
-  }
-
-  &:hover::before {
-    width: 100%;
-    background-color: white;
-  }
-
-  @media (max-width: 950px) {
-    font-size: 13px;
-  }
-`;
-
-const Column3 = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  gap: 10px;
-  transition: all 0.5s ease-in-out;
-`;
-
-const ServicesWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  transition: all 0.5s ease-in-out;
-`;
-
-const Service = styled.div`
-  width: 50%;
-  font-size: 15px;
-  display: flex;
-  gap: 5px;
-  padding: 10px 0px;
-  color: white;
-  transition: all 0.5s ease-in-out;
-
-  @media (max-width: 950px) {
-    font-size: 13px;
-  }
 `;
 
 const BottomWrapper = styled.div`
