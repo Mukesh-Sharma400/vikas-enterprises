@@ -9,7 +9,7 @@ export const Footer = () => {
 
   const sectionData = {
     description:
-      "Vikas Enterprises, founded in 2001, has become a trusted leader in Navi Mumbai's renovation scene. We specialize in all aspects of interior decoration, from Ghansoli to beyond.",
+      "Vikas Enterprises, founded in 2001, has become a trusted leader in Navi Mumbai's renovation scene. We specialize in all aspects of interior decoration, in Navi Mumbai to beyond.",
   };
 
   const addressData = [
@@ -29,10 +29,10 @@ export const Footer = () => {
     },
     {
       className: "bi bi-envelope-at-fill",
-      href: "mailto:mksh400@gmail.com",
+      href: "mailto:vikasenterprises201@gmail.com",
       tooltip: "Email",
       ariaLabel: "Email",
-      data: "mksh400@gmail.com",
+      data: "vikasenterprises201@gmail.com",
     },
   ];
 
@@ -45,25 +45,25 @@ export const Footer = () => {
     },
     {
       className: "bi bi-facebook",
-      href: "https://www.facebook.com/MukeshSharma400",
+      href: "https://www.facebook.com/profile.php?id=61558255354262",
       tooltip: "Facebook",
       ariaLabel: "Facebook",
     },
     {
       className: "bi bi-instagram",
-      href: "https://www.instagram.com/mukesh_sharma400",
+      href: "https://www.instagram.com/vikas_enterprises201",
       tooltip: "Instagram",
       ariaLabel: "Instagram",
     },
     {
       className: "bi bi-threads",
-      href: "https://www.threads.net/mukesh_sharma400",
+      href: "https://www.threads.net/@vikas_enterprises201",
       tooltip: "Threads",
       ariaLabel: "Threads",
     },
     {
       className: "bi bi-twitter-x",
-      href: "https://twitter.com/mukesh_sharma36",
+      href: "https://twitter.com/VikasEnter55562",
       tooltip: "Twitter / X",
       ariaLabel: "Twitter / X",
     },

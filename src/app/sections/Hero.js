@@ -10,7 +10,7 @@ import backgroundImage from "../../../public/assets/hero-background.png";
 export const Hero = () => {
   const timeoutRef = useRef(null);
   const phoneNumber = "+917021739604";
-  const emailAddress = "mksh400@gmail.com";
+  const emailAddress = "vikasenterprises201@gmail.com";
   const [toast, setToast] = useState({ visible: false, message: "" });
 
   const showToastMethod = (message) => {
@@ -58,25 +58,25 @@ export const Hero = () => {
     },
     {
       className: "bi bi-facebook",
-      href: "https://www.facebook.com/MukeshSharma400",
+      href: "https://www.facebook.com/profile.php?id=61558255354262",
       tooltip: "Facebook",
       ariaLabel: "Facebook",
     },
     {
       className: "bi bi-instagram",
-      href: "https://www.instagram.com/mukesh_sharma400",
+      href: "https://www.instagram.com/vikas_enterprises201",
       tooltip: "Instagram",
       ariaLabel: "Instagram",
     },
     {
       className: "bi bi-threads",
-      href: "https://www.threads.net/mukesh_sharma400",
+      href: "https://www.threads.net/@vikas_enterprises201",
       tooltip: "Threads",
       ariaLabel: "Threads",
     },
     {
       className: "bi bi-twitter-x",
-      href: "https://twitter.com/mukesh_sharma36",
+      href: "https://twitter.com/VikasEnter55562",
       tooltip: "Twitter / X",
       ariaLabel: "Twitter / X",
     },

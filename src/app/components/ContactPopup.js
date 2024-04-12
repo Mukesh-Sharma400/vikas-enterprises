@@ -38,51 +38,59 @@ export const ContactPopup = ({ handleClose }) => {
     }, 2000);
   };
 
-  const handleSendMessage = (e) => {
-    e.preventDefault();
-    e.target.reset();
-    showToastMethod("Message sent, Thank you for contacting!");
-    handleClosePopupSlow();
-  };
-
   // const handleSendMessage = (e) => {
   //   e.preventDefault();
-  //   const isValid = form.current.reportValidity();
-  //   if (isValid) {
-  //     const nameInput = form.current.elements.from_name;
-  //     const emailInput = form.current.elements.from_email;
-  //     const phoneInput = form.current.elements.phone_number;
-  //     const messageInput = form.current.elements.message;
-  //     if (nameInput.value.length <= 5) {
-  //       showToastMethod("Please enter your full name");
-  //       return;
-  //     }
-  //     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  //     if (!emailRegex.test(emailInput.value)) {
-  //       showToastMethod("Please enter a valid email address");
-  //       return;
-  //     }
-  //     if (phoneInput.value.trim().length != 10) {
-  //       showToastMethod("Please enter a valid phone number");
-  //       return;
-  //     }
-  //     if (messageInput.value.trim().length <= 20) {
-  //       showToastMethod("Message should be more than 20 characters");
-  //       return;
-  //     }
-  //     emailjs.sendForm("", "", form.current, "").then(
-  //       (result) => {
-  //         showToastMethod("Message sent, Thank you for contacting!");
-  //         e.target.reset();
-  //       },
-  //       (error) => {
-  //         showToastMethod("Oops something went wrong");
-  //       }
-  //     );
-  //   } else {
-  //     showToastMethod("Please fill out all required fields correctly");
-  //   }
+  //   e.target.reset();
+  //   showToastMethod("Message sent, Thank you for contacting!");
+  //   handleClosePopupSlow();
   // };
+
+  const handleSendMessage = (e) => {
+    e.preventDefault();
+    const isValid = form.current.reportValidity();
+    if (isValid) {
+      const nameInput = form.current.elements.from_name;
+      const emailInput = form.current.elements.from_email;
+      const phoneInput = form.current.elements.phone_number;
+      const messageInput = form.current.elements.message;
+      if (nameInput.value.length <= 5) {
+        showToastMethod("Please enter your full name");
+        return;
+      }
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(emailInput.value)) {
+        showToastMethod("Please enter a valid email address");
+        return;
+      }
+      if (phoneInput.value.trim().length != 10) {
+        showToastMethod("Please enter a valid phone number");
+        return;
+      }
+      if (messageInput.value.trim().length <= 20) {
+        showToastMethod("Message should be more than 20 characters");
+        return;
+      }
+      emailjs
+        .sendForm(
+          "service_5ksuaid",
+          "template_7i93fz4",
+          form.current,
+          "xE-9VLmpyymIJNfMP"
+        )
+        .then(
+          (result) => {
+            showToastMethod("Message sent, Thank you for contacting!");
+            e.target.reset();
+            handleClosePopupSlow();
+          },
+          (error) => {
+            showToastMethod("Oops something went wrong");
+          }
+        );
+    } else {
+      showToastMethod("Please fill out all required fields correctly");
+    }
+  };
 
   return (
     <>

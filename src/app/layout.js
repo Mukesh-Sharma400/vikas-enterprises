@@ -29,7 +29,7 @@ export default function Layout({ children }) {
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="./icon.png" type="image/png" />
+        <link rel="icon" href="./icon2.png" type="image/png" />
         <link
           rel="stylesheet"
           type="text/css"
