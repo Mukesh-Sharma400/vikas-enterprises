@@ -132,7 +132,8 @@ const ContentWrapper = styled.div`
   transition: all 0.5s ease-in-out;
 
   @media (max-width: 500px) {
-    height: 130px;
+    height: 150px;
+    height: 150px;
   }
 `;
 
