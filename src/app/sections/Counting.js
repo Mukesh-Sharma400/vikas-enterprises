@@ -144,9 +144,6 @@ const Number = styled.p`
   @media (max-width: 550px) {
     font-size: 35px;
   }
-  @media (max-width: 426px) {
-    font-size: 30px;
-  }
 `;
 
 const Label = styled.p`
@@ -156,8 +153,5 @@ const Label = styled.p`
 
   @media (max-width: 550px) {
     font-size: 18px;
-  }
-  @media (max-width: 426px) {
-    font-size: 16px;
   }
 `;
