@@ -9,7 +9,7 @@ import backgroundImage from "../../../public/assets/hero-background.png";
 
 export const Hero = () => {
   const timeoutRef = useRef(null);
-  const phoneNumber = "+917021739604";
+  const phoneNumber = "+919321048241";
   const emailAddress = "vikasenterprises201@gmail.com";
   const [toast, setToast] = useState({ visible: false, message: "" });
 

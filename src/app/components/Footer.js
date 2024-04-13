@@ -4,7 +4,7 @@ import styled from "styled-components";
 import logo from "../../../public/assets/logo.png";
 
 export const Footer = () => {
-  const phoneNumber = "+917021739604";
+  const phoneNumber = "+919321048241";
   const currentYear = new Date().getFullYear();
 
   const sectionData = {
@@ -22,10 +22,10 @@ export const Footer = () => {
     },
     {
       className: "bi bi-telephone-fill",
-      href: "tel:+917021739604",
+      href: "tel:+919321048241",
       tooltip: "Phone",
       ariaLabel: "Phone",
-      data: "+91 7021739604",
+      data: "+91 9321048241",
     },
     {
       className: "bi bi-envelope-at-fill",
