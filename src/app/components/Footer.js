@@ -45,7 +45,7 @@ export const Footer = () => {
     },
     {
       className: "bi bi-facebook",
-      href: "https://www.facebook.com/profile.php?id=61558255354262",
+      href: "https://www.facebook.com/vikasenterprises201",
       tooltip: "Facebook",
       ariaLabel: "Facebook",
     },
