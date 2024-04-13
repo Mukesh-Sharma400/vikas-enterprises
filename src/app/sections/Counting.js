@@ -56,7 +56,7 @@ export const Counting = () => {
           Projects
         </Label>
       </ContentWrapper>
-      <Divider />
+      <Divider className="middle" />
       <ContentWrapper>
         <Number data-aos="fade-up">
           {isVisible ? (
@@ -100,6 +100,12 @@ const DisplayWrapper = styled.div`
   padding: 50px 0;
   background-color: white;
   transition: all 0.5s ease-in-out;
+
+  @media (max-width: 500px) {
+    max-width: 264px;
+    flex-wrap: wrap;
+    margin: 0 auto;
+  }
 `;
 
 const Divider = styled.div`
@@ -107,6 +113,13 @@ const Divider = styled.div`
   height: 100px;
   background-color: grey;
   transition: all 0.5s ease-in-out;
+
+  @media (max-width: 500px) {
+    &.middle {
+      width: 100%;
+      height: 2px;
+    }
+  }
 `;
 
 const ContentWrapper = styled.div`
@@ -117,6 +130,10 @@ const ContentWrapper = styled.div`
   justify-content: center;
   text-align: center;
   transition: all 0.5s ease-in-out;
+
+  @media (max-width: 500px) {
+    height: 130px;
+  }
 `;
 
 const Number = styled.p`
@@ -130,9 +147,6 @@ const Number = styled.p`
   @media (max-width: 426px) {
     font-size: 30px;
   }
-  @media (max-width: 376px) {
-    font-size: 23px;
-  }
 `;
 
 const Label = styled.p`
@@ -145,8 +159,5 @@ const Label = styled.p`
   }
   @media (max-width: 426px) {
     font-size: 16px;
-  }
-  @media (max-width: 376px) {
-    font-size: 14px;
   }
 `;
