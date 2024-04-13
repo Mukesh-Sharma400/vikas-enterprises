@@ -179,6 +179,7 @@ const ContentWrapper = styled.div`
 
 const InnerContentWrapper = styled.div`
   position: relative;
+  width: fit-content;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -204,11 +205,17 @@ const Heading = styled.h1`
   @media (max-width: 950px) {
     font-size: 45px;
   }
+  @media (max-width: 900px) {
+    font-size: 42.5px;
+  }
   @media (max-width: 850px) {
     font-size: 40px;
   }
   @media (max-width: 768px) {
     font-size: 35px;
+  }
+  @media (max-width: 700px) {
+    max-width: 450px;
   }
 `;
 
@@ -314,16 +321,19 @@ const CircularRotatingTextWrapper = styled.div`
   right: 20px;
   transition: all 0.5s ease-in-out;
 
-  @media (max-width: 675px) {
-    right: 40px;
-  }
-  @media (max-width: 635px) {
-    right: 50px;
-  }
-  @media (max-width: 600px) {
+  @media (max-width: 700px) {
     right: 60px;
   }
+  @media (max-width: 650px) {
+    right: 65px;
+  }
+  @media (max-width: 600px) {
+    right: 70px;
+  }
   @media (max-width: 450px) {
+    right: 75px;
+  }
+  @media (max-width: 400px) {
     right: 80px;
   }
 `;

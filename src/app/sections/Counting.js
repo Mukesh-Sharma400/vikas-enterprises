@@ -124,8 +124,11 @@ const Number = styled.p`
   color: black;
   transition: all 0.5s ease-in-out;
 
-  @media (max-width: 426px) {
+  @media (max-width: 550px) {
     font-size: 35px;
+  }
+  @media (max-width: 426px) {
+    font-size: 30px;
   }
   @media (max-width: 376px) {
     font-size: 23px;
@@ -137,8 +140,11 @@ const Label = styled.p`
   color: grey;
   transition: all 0.5s ease-in-out;
 
+  @media (max-width: 550px) {
+    font-size: 18px;
+  }
   @media (max-width: 426px) {
-    font-size: 17px;
+    font-size: 16px;
   }
   @media (max-width: 376px) {
     font-size: 14px;
