@@ -76,7 +76,7 @@ export const Hero = () => {
     },
     {
       className: "bi bi-twitter-x",
-      href: "https://twitter.com/VikasEnter55562",
+      href: "https://twitter.com/vikas_enter201",
       tooltip: "Twitter / X",
       ariaLabel: "Twitter / X",
     },
