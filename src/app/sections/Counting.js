@@ -40,7 +40,7 @@ export const Counting = () => {
   return (
     <DisplayWrapper ref={ref}>
       <ContentWrapper>
-        <Number data-aos={screenWidth < 600 ? "fade-up-left" : "fade-up"}>
+        <Number data-aos={screenWidth < 600 ? "fade-left" : "fade-up"}>
           {isVisible ? (
             <CountUp start={0} end={sectionData.years} duration={5} />
           ) : (
@@ -56,7 +56,7 @@ export const Counting = () => {
       </ContentWrapper>
       <Divider />
       <ContentWrapper>
-        <Number data-aos={screenWidth < 600 ? "fade-up-right" : "fade-up"}>
+        <Number data-aos={screenWidth < 600 ? "fade-right" : "fade-up"}>
           {isVisible ? (
             <CountUp start={0} end={sectionData.projects} duration={5} />
           ) : (
@@ -72,7 +72,7 @@ export const Counting = () => {
       </ContentWrapper>
       <Divider className="middle" />
       <ContentWrapper>
-        <Number data-aos={screenWidth < 600 ? "fade-down-left" : "fade-up"}>
+        <Number data-aos={screenWidth < 600 ? "fade-left" : "fade-up"}>
           {isVisible ? (
             <CountUp start={0} end={sectionData.reviews} duration={5} />
           ) : (
@@ -88,7 +88,7 @@ export const Counting = () => {
       </ContentWrapper>
       <Divider />
       <ContentWrapper>
-        <Number data-aos={screenWidth < 600 ? "fade-down-right" : "fade-up"}>
+        <Number data-aos={screenWidth < 600 ? "fade-right" : "fade-up"}>
           {isVisible ? (
             <CountUp start={0} end={sectionData.happyPercent} duration={5} />
           ) : (
