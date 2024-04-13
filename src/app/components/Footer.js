@@ -95,13 +95,13 @@ export const Footer = () => {
       <ColumnsWrapper>
         <ContactColumn>
           <ContactSentence>Ready To Build Your Dream Home?</ContactSentence>
-          <ContactBtn>Contact Now</ContactBtn>
+          <ContactBtn data-aos="fade-right">Contact Now</ContactBtn>
         </ContactColumn>
         <ServicesColumn>
           <SectionHeading>Services</SectionHeading>
           <ServicesWrapper>
             {servicesData.map((service, index) => (
-              <Service key={index}>
+              <Service key={index} data-aos="fade-up">
                 <i class="bi bi-check-circle"></i> {service}
               </Service>
             ))}
@@ -110,8 +110,8 @@ export const Footer = () => {
         <PagesColumn>
           <SectionHeading>Pages</SectionHeading>
           <PagesWrapper>
-            {routesData.map((page) => (
-              <Page key={page.path} href={page.path}>
+            {routesData.map((page, index) => (
+              <Page key={index} href={page.path} data-aos="fade-up">
                 {page.label}
               </Page>
             ))}
@@ -122,7 +122,7 @@ export const Footer = () => {
         <NameColumn>
           <LogoNameWrapper href="/">
             <Logo src={logo} alt="Vikas Enterprises" />
-            <Name>
+            <Name data-aos="fade-right">
               Vikas
               <br />
               Enterprises
@@ -133,7 +133,12 @@ export const Footer = () => {
         <AddressColumn>
           <SocialLinksWrapper>
             {addressData.map((link, index) => (
-              <SocialLink key={index} href={link.href} target="_blank">
+              <SocialLink
+                key={index}
+                href={link.href}
+                target="_blank"
+                data-aos="fade-up"
+              >
                 <SocialIcon
                   className={link.className}
                   aria-label={link.ariaLabel}
@@ -146,7 +151,12 @@ export const Footer = () => {
         <SocialColumn>
           <SocialLinksWrapper>
             {socialLinks.map((link, index) => (
-              <SocialLink key={index} href={link.href} target="_blank">
+              <SocialLink
+                key={index}
+                href={link.href}
+                target="_blank"
+                data-aos="fade-up"
+              >
                 <SocialIcon
                   className={link.className}
                   aria-label={link.ariaLabel}

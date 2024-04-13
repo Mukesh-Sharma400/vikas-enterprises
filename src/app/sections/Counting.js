@@ -16,6 +16,20 @@ export const Counting = () => {
     }
   }, [inView]);
 
+  const [screenWidth, setScreenWidth] = useState(
+    typeof window !== "undefined" ? window.innerWidth : 0
+  );
+
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const sectionData = {
     years: currentYear - 2001,
     projects: 100,
@@ -26,7 +40,7 @@ export const Counting = () => {
   return (
     <DisplayWrapper ref={ref}>
       <ContentWrapper>
-        <Number data-aos="fade-up">
+        <Number data-aos={screenWidth < 600 ? "fade-up-left" : "fade-up"}>
           {isVisible ? (
             <CountUp start={0} end={sectionData.years} duration={5} />
           ) : (
@@ -42,7 +56,7 @@ export const Counting = () => {
       </ContentWrapper>
       <Divider />
       <ContentWrapper>
-        <Number data-aos="fade-up">
+        <Number data-aos={screenWidth < 600 ? "fade-up-right" : "fade-up"}>
           {isVisible ? (
             <CountUp start={0} end={sectionData.projects} duration={5} />
           ) : (
@@ -58,7 +72,7 @@ export const Counting = () => {
       </ContentWrapper>
       <Divider className="middle" />
       <ContentWrapper>
-        <Number data-aos="fade-up">
+        <Number data-aos={screenWidth < 600 ? "fade-down-left" : "fade-up"}>
           {isVisible ? (
             <CountUp start={0} end={sectionData.reviews} duration={5} />
           ) : (
@@ -74,7 +88,7 @@ export const Counting = () => {
       </ContentWrapper>
       <Divider />
       <ContentWrapper>
-        <Number data-aos="fade-up">
+        <Number data-aos={screenWidth < 600 ? "fade-down-right" : "fade-up"}>
           {isVisible ? (
             <CountUp start={0} end={sectionData.happyPercent} duration={5} />
           ) : (
