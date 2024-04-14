@@ -15,7 +15,7 @@ body {
   width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #eaf1fb;
 }
 ::-webkit-scrollbar-thumb {
   background: rgb(200, 200, 200);
@@ -51,6 +51,6 @@ textarea {
 
 .custom-tooltip {
   font-weight: 500 !important;
-  --bs-tooltip-bg: #ffffff !important;
-  --bs-tooltip-color: #1877f2 !important;
+  --bs-tooltip-bg: #eaf1fb !important;
+  --bs-tooltip-color: #207cf2 !important;
 }

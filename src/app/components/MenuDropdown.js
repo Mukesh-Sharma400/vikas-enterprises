@@ -92,7 +92,7 @@ const DisplayWrapper = styled.div`
   justify-content: space-between;
   padding: 10px;
   border-radius: 20px;
-  background: #ffffff;
+  background-color: ${({ theme }) => theme.globalColors.ternaryColor};
   box-shadow: 0 4px 30px rgba(225, 225, 225, 0.5);
   backdrop-filter: blur(10.1px);
   -webkit-backdrop-filter: blur(10.1px);
@@ -123,8 +123,8 @@ const Route = styled.button`
   align-items: center;
   justify-content: center;
   font-size: 18px;
-  color: #1877f2;
-  background-color: #ffffff;
+  color: ${({ theme }) => theme.globalColors.primaryColor};
+  background-color: ${({ theme }) => theme.globalColors.ternaryColor};
   text-decoration: none;
   transition: all 0.5s ease-in-out;
 
@@ -136,8 +136,8 @@ const Route = styled.button`
 const ContactBtn = styled.button`
   font-size: 18px;
   font-weight: 600;
-  color: white;
-  background-color: #1877f2;
+  color: ${({ theme }) => theme.globalColors.ternaryColor};
+  background-color: ${({ theme }) => theme.globalColors.primaryColor};
   border-radius: 15px;
   width: 100%;
   height: 40px;

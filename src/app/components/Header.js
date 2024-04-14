@@ -157,7 +157,7 @@ const DisplayWrapper = styled.div`
   justify-content: space-between;
   padding: 10px;
   border-radius: 40px;
-  background: #ffffff90;
+  background: #eaf1fb90;
   box-shadow: 0 4px 30px rgba(225, 225, 225, 0.5);
   backdrop-filter: blur(10.1px);
   -webkit-backdrop-filter: blur(10.1px);
@@ -206,7 +206,7 @@ const Logo = styled(Image)`
 const Name = styled.p`
   font-size: 30px;
   font-weight: 600;
-  color: #1877f2;
+  color: ${({ theme }) => theme.globalColors.primaryColor};
   transition: all 0.5s ease-in-out;
 
   @media (max-width: 600px) {
@@ -227,7 +227,7 @@ const RoutesWrapper = styled.div`
 
 const Route = styled(Link)`
   font-size: 16px;
-  color: #1877f2;
+  color: ${({ theme }) => theme.globalColors.primaryColor};
   text-decoration: none;
 
   &:hover {
@@ -253,8 +253,8 @@ const ButtonsWrapper = styled.div`
 const ContactBtn = styled.button`
   font-size: 20px;
   font-weight: 600;
-  color: white;
-  background-color: #1877f2;
+  color: ${({ theme }) => theme.globalColors.ternaryColor};
+  background-color: ${({ theme }) => theme.globalColors.primaryColor};
   border-radius: 40px;
   width: 180px;
   height: 50px;
@@ -295,7 +295,7 @@ const Button = styled.button`
     height: var(--height-bar);
     width: 100%;
     border-radius: 0.5rem;
-    background-color: #1877f2;
+    background-color: ${({ theme }) => theme.globalColors.primaryColor};
   }
 
   .bar--1 {
@@ -337,7 +337,7 @@ const PagesDropdownWrapper = styled.div`
 
 const PagesDropdown = styled.p`
   font-size: 16px;
-  color: #1877f2;
+  color: ${({ theme }) => theme.globalColors.primaryColor};
   cursor: pointer;
 `;
 
@@ -350,7 +350,7 @@ const PagesDropdownContentWrapper = styled.div`
   gap: 16px;
   padding: 20px 10px;
   border-radius: 20px;
-  background: #ffffff;
+  background: ${({ theme }) => theme.globalColors.ternaryColor};
   box-shadow: 0 4px 30px rgba(225, 225, 225, 0.5);
   backdrop-filter: blur(10.1px);
   -webkit-backdrop-filter: blur(10.1px);
@@ -365,7 +365,7 @@ const Route2 = styled(Link)`
   align-items: center;
   justify-content: center;
   font-size: 16px;
-  color: #1877f2;
+  color: ${({ theme }) => theme.globalColors.primaryColor};
   text-decoration: none;
 
   &:hover {

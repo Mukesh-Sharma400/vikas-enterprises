@@ -192,7 +192,7 @@ const DisplayWrapper = styled.div`
   flex-direction: column;
   gap: 50px;
   padding: 50px 5%;
-  background-color: #1877f2;
+  background-color: ${({ theme }) => theme.globalColors.primaryColor};
   transition: all 0.5s ease-in-out;
 `;
 
@@ -246,8 +246,8 @@ const ContactSentence = styled.p`
 const ContactBtn = styled.button`
   font-size: 20px;
   font-weight: 600;
-  color: #1877f2;
-  background-color: white;
+  color: ${({ theme }) => theme.globalColors.primaryColor};
+  background-color: ${({ theme }) => theme.globalColors.ternaryColor};
   border-radius: 40px;
   width: 220px;
   height: 50px;
@@ -362,7 +362,7 @@ const Description = styled.p`
 `;
 
 const AddressColumn = styled.div`
-  width: 30%;
+  width: 31%;
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -375,7 +375,7 @@ const AddressColumn = styled.div`
 `;
 
 const SocialColumn = styled.div`
-  width: 30%;
+  width: 29%;
   display: flex;
   flex-direction: column;
   align-items: start;

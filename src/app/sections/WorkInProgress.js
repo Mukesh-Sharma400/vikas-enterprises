@@ -48,7 +48,7 @@ const ContentWrapper = styled.div`
 const Message = styled.p`
   max-width: 420px;
   font-size: 60px;
-  color: #1877f2;
+  color: ${({ theme }) => theme.globalColors.primaryColor};
   filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.05))
     drop-shadow(0 4px 3px rgb(0 0 0 / 0.2));
   transition: all 0.5s ease-in-out;
@@ -73,8 +73,8 @@ const Message = styled.p`
 const Button = styled.button`
   font-size: 20px;
   font-weight: 600;
-  color: white;
-  background-color: #1877f2;
+  color: ${({ theme }) => theme.globalColors.ternaryColor};
+  background-color: ${({ theme }) => theme.globalColors.primaryColor};
   border-radius: 40px;
   width: 180px;
   min-width: 180px;

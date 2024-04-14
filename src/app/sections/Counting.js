@@ -163,7 +163,7 @@ const Number = styled.p`
 
 const Label = styled.p`
   font-size: 20px;
-  color: #1877f2;
+  color: ${({ theme }) => theme.globalColors.primaryColor};
   transition: all 0.5s ease-in-out;
 
   @media (max-width: 550px) {

@@ -12,8 +12,8 @@ const DisplayWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #1877f2;
-  background: #ffffff;
+  color: ${({ theme }) => theme.globalColors.primaryColor};
+  background-color: ${({ theme }) => theme.globalColors.ternaryColor};
   box-shadow: 0 4px 30px rgba(225, 225, 225, 0.5);
   backdrop-filter: blur(10.1px);
   -webkit-backdrop-filter: blur(10.1px);

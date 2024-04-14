@@ -250,8 +250,8 @@ const ButtonsWrapper = styled.div`
 const PrimaryBtn = styled.button`
   font-size: 20px;
   font-weight: 600;
-  color: white;
-  background-color: #1877f2;
+  color: ${({ theme }) => theme.globalColors.ternaryColor};
+  background-color: ${({ theme }) => theme.globalColors.primaryColor};
   border-radius: 40px;
   width: 180px;
   min-width: 180px;
@@ -271,9 +271,8 @@ const PrimaryBtn = styled.button`
 const SecondaryBtn = styled.button`
   font-size: 20px;
   font-weight: 600;
-  color: #1877f2;
-  background-color: transparent;
-  border: 2px solid #1877f2 !important;
+  color: ${({ theme }) => theme.globalColors.primaryColor};
+  background-color: ${({ theme }) => theme.globalColors.ternaryColor};
   border-radius: 40px;
   width: 180px;
   min-width: 180px;
@@ -308,8 +307,8 @@ const SocialLink = styled(Link)`
   text-decoration: none;
   font-size: 25px;
   border-radius: 50%;
-  color: white;
-  background-color: #1877f270;
+  color: ${({ theme }) => theme.globalColors.primaryColor};
+  background-color: ${({ theme }) => theme.globalColors.ternaryColor};
   filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1))
     drop-shadow(0 1px 1px rgb(0 0 0 / 0.06));
   transition: all 0.5s ease-in-out;
