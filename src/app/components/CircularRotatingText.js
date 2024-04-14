@@ -24,7 +24,7 @@ const RotatingCircularText = styled.h1`
   text-transform: uppercase;
   font-size: calc(var(--font-size) * 1rem);
   position: relative;
-  color: white;
+  color: ${({ theme }) => theme.globalColors.ternaryColor};
   animation: ${spinAnimation} 25s infinite linear;
 `;
 

@@ -191,7 +191,7 @@ const InnerContentWrapper = styled.div`
 
 const Heading = styled.h1`
   font-size: 60px;
-  color: white;
+  color: ${({ theme }) => theme.globalColors.ternaryColor};
   filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04))
     drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
   transition: all 0.5s ease-in-out;
@@ -221,7 +221,7 @@ const Heading = styled.h1`
 
 const Description = styled.p`
   font-size: 20px;
-  color: white;
+  color: ${({ theme }) => theme.globalColors.ternaryColor};
   filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1))
     drop-shadow(0 1px 1px rgb(0 0 0 / 0.06));
   transition: all 0.5s ease-in-out;
