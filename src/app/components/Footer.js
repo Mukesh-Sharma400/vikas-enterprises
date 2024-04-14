@@ -228,10 +228,6 @@ const ContactColumn = styled.div`
   transition: all 0.5s ease-in-out;
 
   @media (max-width: 768px) {
-    width: 85%;
-  }
-
-  @media (max-width: 426px) {
     width: 100%;
   }
 `;
@@ -261,10 +257,6 @@ const ServicesColumn = styled.div`
   align-items: start;
   gap: 10px;
   transition: all 0.5s ease-in-out;
-
-  @media (max-width: 426px) {
-    width: 100%;
-  }
 `;
 
 const ServicesWrapper = styled.div`
@@ -292,10 +284,6 @@ const PagesColumn = styled.div`
   transition: all 0.5s ease-in-out;
 
   @media (max-width: 768px) {
-    width: 35%;
-  }
-
-  @media (max-width: 426px) {
     width: 100%;
   }
 `;
@@ -329,7 +317,7 @@ const NameColumn = styled.div`
   gap: 10px;
   transition: all 0.5s ease-in-out;
 
-  @media (max-width: 426px) {
+  @media (max-width: 768px) {
     width: 100%;
   }
 `;
@@ -369,7 +357,7 @@ const AddressColumn = styled.div`
   gap: 10px;
   transition: all 0.5s ease-in-out;
 
-  @media (max-width: 426px) {
+  @media (max-width: 768px) {
     width: 100%;
   }
 `;
@@ -382,7 +370,7 @@ const SocialColumn = styled.div`
   gap: 10px;
   transition: all 0.5s ease-in-out;
 
-  @media (max-width: 426px) {
+  @media (max-width: 768px) {
     width: 100%;
   }
 `;
@@ -431,7 +419,7 @@ const BottomWrapper = styled.div`
   font-size: 15px;
   transition: all 0.5s ease-in-out;
 
-  @media (max-width: 600px) {
+  @media (max-width: 750px) {
     flex-direction: column;
     gap: 10px;
     text-align: center;
