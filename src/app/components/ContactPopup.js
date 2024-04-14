@@ -171,7 +171,7 @@ const PopupContainer = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   width: 75%;
-  max-width: calc(1440px - 10%);
+  max-width: 950px;
   max-height: 90%;
   border-radius: 10px;
   padding: 2.5rem;

@@ -281,10 +281,6 @@ const Service = styled.div`
   padding: 10px 0px;
   color: white;
   transition: all 0.5s ease-in-out;
-
-  @media (max-width: 950px) {
-    font-size: 13px;
-  }
 `;
 
 const PagesColumn = styled.div`
@@ -322,10 +318,6 @@ const Page = styled(Link)`
 
   &:hover {
     font-weight: 500;
-  }
-
-  @media (max-width: 950px) {
-    font-size: 13px;
   }
 `;
 
@@ -367,10 +359,6 @@ const Description = styled.p`
   font-size: 15px;
   color: white;
   transition: all 0.5s ease-in-out;
-
-  @media (max-width: 950px) {
-    font-size: 13px;
-  }
 `;
 
 const AddressColumn = styled.div`
@@ -442,10 +430,6 @@ const BottomWrapper = styled.div`
   color: white;
   font-size: 15px;
   transition: all 0.5s ease-in-out;
-
-  @media (max-width: 768px) {
-    font-size: 13px;
-  }
 
   @media (max-width: 600px) {
     flex-direction: column;
