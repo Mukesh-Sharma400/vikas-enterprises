@@ -214,7 +214,7 @@ const ColumnsWrapper = styled.div`
 
 const SectionHeading = styled.p`
   font-size: 25px;
-  color: white;
+  color: ${({ theme }) => theme.globalColors.ternaryColor};
   margin-bottom: 10px;
   transition: all 0.5s ease-in-out;
 `;
@@ -235,7 +235,7 @@ const ContactColumn = styled.div`
 const ContactSentence = styled.p`
   font-size: 36px;
   font-weight: 600;
-  color: white;
+  color: ${({ theme }) => theme.globalColors.ternaryColor};
   transition: all 0.5s ease-in-out;
 `;
 
@@ -271,7 +271,7 @@ const Service = styled.div`
   display: flex;
   gap: 5px;
   padding: 10px 0px;
-  color: white;
+  color: ${({ theme }) => theme.globalColors.ternaryColor};
   transition: all 0.5s ease-in-out;
 `;
 
@@ -300,7 +300,7 @@ const Page = styled(Link)`
   display: flex;
   gap: 5px;
   padding: 10px 0px;
-  color: white;
+  color: ${({ theme }) => theme.globalColors.ternaryColor};
   text-decoration: none;
   transition: all 0.5s ease-in-out;
 
@@ -339,13 +339,13 @@ const Name = styled.p`
   font-size: 32px;
   font-weight: 600;
   line-height: 33px;
-  color: white;
+  color: ${({ theme }) => theme.globalColors.ternaryColor};
   transition: all 0.5s ease-in-out;
 `;
 
 const Description = styled.p`
   font-size: 15px;
-  color: white;
+  color: ${({ theme }) => theme.globalColors.ternaryColor};
   transition: all 0.5s ease-in-out;
 `;
 
@@ -389,7 +389,7 @@ const SocialLink = styled(Link)`
   gap: 10px;
   text-decoration: none;
   font-size: 15px;
-  color: white;
+  color: ${({ theme }) => theme.globalColors.ternaryColor};
   transition: all 0.5s ease-in-out;
 
   &:hover {
@@ -406,7 +406,7 @@ const SocialIcon = styled.i`
   text-decoration: none;
   font-size: 18px;
   border-radius: 50%;
-  color: white;
+  color: ${({ theme }) => theme.globalColors.ternaryColor};
   background-color: rgba(255, 255, 255, 0.2);
   transition: all 0.5s ease-in-out;
 `;
@@ -415,7 +415,7 @@ const BottomWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: white;
+  color: ${({ theme }) => theme.globalColors.ternaryColor};
   font-size: 15px;
   transition: all 0.5s ease-in-out;
 
@@ -438,7 +438,7 @@ const RightSide = styled.div`
   transition: all 0.5s ease-in-out;
 
   a {
-    color: white;
+    color: ${({ theme }) => theme.globalColors.ternaryColor};
     text-decoration: none;
     transition: all 0.5s ease-in-out;
 
