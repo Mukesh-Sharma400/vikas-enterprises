@@ -128,7 +128,7 @@ const Divider = styled.div`
 
   @media (max-width: 500px) {
     &.middle {
-      width: 100%;
+      width: 90%;
       height: 2px;
     }
   }
