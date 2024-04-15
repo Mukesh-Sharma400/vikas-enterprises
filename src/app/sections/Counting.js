@@ -115,7 +115,6 @@ const DisplayWrapper = styled.div`
   transition: all 0.5s ease-in-out;
 
   @media (max-width: 500px) {
-    max-width: 264px;
     flex-wrap: wrap;
     margin: 0 auto;
   }
