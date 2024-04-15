@@ -19,7 +19,7 @@ export const AboutUs = () => {
       <DisplayWrapper>
         <AboutUsImage src={aboutus} alt="About Us" />
         <ContentWrapper>
-          <InnerContentWrapper data-aos="zoom-in-up">
+          <InnerContentWrapper>
             <AboutUsHeading>{sectionData.smallHeading}</AboutUsHeading>
             <Heading>{sectionData.heading}</Heading>
             <Description>{sectionData.description}</Description>
@@ -44,7 +44,7 @@ const DisplayWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0px 5% 50px;
+  padding: 0px 5%;
   position: relative;
   background-color: ${({ theme }) => theme.globalColors.ternaryColor};
   transition: all 0.5s ease-in-out;
@@ -52,7 +52,7 @@ const DisplayWrapper = styled.div`
   @media (max-width: 768px) {
     flex-direction: column;
     height: 100%;
-    max-height: 700px;
+    max-height: unset;
   }
 `;
 
@@ -62,6 +62,10 @@ const AboutUsImage = styled(Image)`
   border-radius: 40px;
   object-fit: cover;
   transition: all 0.5s ease-in-out;
+
+  @media (max-width: 768px) {
+    height: 550px;
+  }
 `;
 
 const ContentWrapper = styled.div`
@@ -69,14 +73,16 @@ const ContentWrapper = styled.div`
   top: 20px;
   right: calc(5% + 20px);
   width: 50%;
-  height: calc(100% - 90px);
+  height: calc(100% - 40px);
   transition: all 0.5s ease-in-out;
 
   @media (max-width: 768px) {
-    width: 84.7%;
+    width: calc(100% - (10% + 30px));
     height: fit-content;
     top: unset;
-    bottom: 70px;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
   }
 `;
 

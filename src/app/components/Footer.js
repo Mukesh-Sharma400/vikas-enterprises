@@ -191,6 +191,7 @@ const DisplayWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 50px;
+  margin-top: 50px;
   padding: 50px 5%;
   background-color: ${({ theme }) => theme.globalColors.primaryColor};
   transition: all 0.5s ease-in-out;
