@@ -10,17 +10,21 @@ import { useEffect, useRef, useState } from "react";
 export const Header = () => {
   const menuRef = useRef();
   const pathName = usePathname();
-  const [menuOpened, setMenuOpened] = useState(false);
-  const [showContactPopup, setShowContactPopup] = useState(false);
-  const [pagesDropdown, setPagesDropdown] = useState(false);
-
   const [opacity, setOpacity] = useState(false);
+  const [menuOpened, setMenuOpened] = useState(false);
+  const [pagesDropdown, setPagesDropdown] = useState(false);
+  const [showContactPopup, setShowContactPopup] = useState(false);
 
-  const handleCloseDropdown = () => {
-    setTimeout(() => {
-      setPagesDropdown(false);
-    }, 1000);
-    setOpacity(false);
+  const routesData = [
+    { path: "/", label: "Home", width: 50 },
+    { path: "/services", label: "Services", width: 70 },
+    { path: "/projects", label: "Projects", width: 65 },
+    { path: "/gallery", label: "Gallery", width: 60 },
+    { path: "/aboutus", label: "About Us", width: 75 },
+  ];
+
+  const handleMenu = () => {
+    setMenuOpened(!menuOpened);
   };
 
   const handleOpenDropdown = () => {
@@ -28,6 +32,13 @@ export const Header = () => {
       setOpacity(true);
     }, 100);
     setPagesDropdown(true);
+  };
+
+  const handleCloseDropdown = () => {
+    setTimeout(() => {
+      setPagesDropdown(false);
+    }, 1000);
+    setOpacity(false);
   };
 
   useEffect(() => {
@@ -53,18 +64,6 @@ export const Header = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [pagesDropdown]);
-
-  const routesData = [
-    { path: "/", label: "Home", width: 50 },
-    { path: "/services", label: "Services", width: 70 },
-    { path: "/projects", label: "Projects", width: 65 },
-    { path: "/gallery", label: "Gallery", width: 60 },
-    { path: "/aboutus", label: "About Us", width: 75 },
-  ];
-
-  const handleMenu = () => {
-    setMenuOpened(!menuOpened);
-  };
 
   return (
     <>
@@ -172,6 +171,7 @@ const ContentWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  transition: all 0.5s ease-in-out;
 `;
 
 const LogoNameWrapper = styled(Link)`
@@ -229,6 +229,7 @@ const Route = styled(Link)`
   font-size: 16px;
   color: ${({ theme }) => theme.globalColors.primaryColor};
   text-decoration: none;
+  transition: all 0.5s ease-in-out;
 
   &:hover {
     font-weight: 500;
@@ -266,6 +267,15 @@ const ContactBtn = styled.button`
 `;
 
 const Button = styled.button`
+  display: none;
+  width: 30px;
+  min-width: 30px;
+  max-width: 30px;
+  flex-direction: column;
+  gap: var(--gap);
+  cursor: pointer;
+  position: relative;
+  background: transparent;
   padding: 0;
   --gap: 5px;
   --height-bar: 3px;
@@ -275,20 +285,9 @@ const Button = styled.button`
   --rotate-bar-one: 0;
   --rotate-bar-three: 0;
 
-  display: none;
-
   @media (max-width: 768px) {
     display: flex;
   }
-
-  width: 30px;
-  min-width: 30px;
-  max-width: 30px;
-  flex-direction: column;
-  gap: var(--gap);
-  cursor: pointer;
-  position: relative;
-  background: transparent;
 
   .bar {
     position: relative;
@@ -329,6 +328,7 @@ const Button = styled.button`
 const PagesDropdownWrapper = styled.div`
   position: relative;
   display: none;
+  transition: all 0.5s ease-in-out;
 
   @media (max-width: 1200px) {
     display: block;
@@ -339,6 +339,7 @@ const PagesDropdown = styled.p`
   font-size: 16px;
   color: ${({ theme }) => theme.globalColors.primaryColor};
   cursor: pointer;
+  transition: all 0.5s ease-in-out;
 `;
 
 const PagesDropdownContentWrapper = styled.div`
@@ -367,6 +368,7 @@ const Route2 = styled(Link)`
   font-size: 16px;
   color: ${({ theme }) => theme.globalColors.primaryColor};
   text-decoration: none;
+  transition: all 0.5s ease-in-out;
 
   &:hover {
     font-weight: 500;

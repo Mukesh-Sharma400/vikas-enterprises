@@ -6,13 +6,8 @@ import { useEffect, useRef, useState } from "react";
 export const ContactPopup = ({ handleClose }) => {
   const form = useRef();
   const timeoutRef = useRef(null);
-  const [toast, setToast] = useState({ visible: false, message: "" });
-
   const [opacity, setOpacity] = useState(false);
-
-  useEffect(() => {
-    setOpacity(true);
-  }, []);
+  const [toast, setToast] = useState({ visible: false, message: "" });
 
   const handleClosePopupFast = () => {
     setTimeout(() => {
@@ -37,13 +32,6 @@ export const ContactPopup = ({ handleClose }) => {
       setToast({ visible: false, message: "" });
     }, 2000);
   };
-
-  // const handleSendMessage = (e) => {
-  //   e.preventDefault();
-  //   e.target.reset();
-  //   showToastMethod("Message sent, Thank you for contacting!");
-  //   handleClosePopupSlow();
-  // };
 
   const handleSendMessage = (e) => {
     e.preventDefault();
@@ -91,6 +79,10 @@ export const ContactPopup = ({ handleClose }) => {
       showToastMethod("Please fill out all required fields correctly");
     }
   };
+
+  useEffect(() => {
+    setOpacity(true);
+  }, []);
 
   return (
     <>

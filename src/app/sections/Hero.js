@@ -4,7 +4,7 @@ import copy from "clipboard-copy";
 import styled from "styled-components";
 import { Toast } from "../components/Toast";
 import { useEffect, useRef, useState } from "react";
-import CircularText from "../components/CircularRotatingText";
+import { CircularText } from "../components/CircularRotatingText";
 import backgroundImage from "../../../public/assets/hero-background.png";
 
 export const Hero = () => {

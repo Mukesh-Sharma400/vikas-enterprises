@@ -9,16 +9,22 @@ export const Counting = () => {
   const { ref, inView } = useInView({
     threshold: 0.5,
   });
+  const [screenWidth, setScreenWidth] = useState(
+    typeof window !== "undefined" ? window.innerWidth : 0
+  );
+
+  const sectionData = {
+    years: currentYear - 2001,
+    projects: 100,
+    reviews: 30,
+    happyPercent: 97,
+  };
 
   useEffect(() => {
     if (inView) {
       setIsVisible(true);
     }
   }, [inView]);
-
-  const [screenWidth, setScreenWidth] = useState(
-    typeof window !== "undefined" ? window.innerWidth : 0
-  );
 
   useEffect(() => {
     const handleResize = () => {
@@ -29,13 +35,6 @@ export const Counting = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
-  const sectionData = {
-    years: currentYear - 2001,
-    projects: 100,
-    reviews: 30,
-    happyPercent: 97,
-  };
 
   return (
     <DisplayWrapper ref={ref}>
@@ -112,7 +111,7 @@ const DisplayWrapper = styled.div`
   align-items: center;
   justify-content: space-evenly;
   padding: 50px 0;
-  background-color: white;
+  background-color: ${({ theme }) => theme.globalColors.ternaryColor};
   transition: all 0.5s ease-in-out;
 
   @media (max-width: 500px) {

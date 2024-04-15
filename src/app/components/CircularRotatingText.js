@@ -1,5 +1,25 @@
 import styled, { keyframes } from "styled-components";
 
+export const CircularText = () => {
+  const text = "Best Interior Firm Since 2001 •";
+
+  return (
+    <Container>
+      <RotatingCircularText>
+        {text.split("").map((char, index) => (
+          <Char
+            key={index}
+            style={{ "--char-index": index }}
+            className="secondary-font"
+          >
+            {char}
+          </Char>
+        ))}
+      </RotatingCircularText>
+    </Container>
+  );
+};
+
 const spinAnimation = keyframes`
   to {
     transform: rotate(360deg);
@@ -37,25 +57,3 @@ const Char = styled.span`
     rotate(calc(var(--inner-angle) * var(--char-index)))
     translateY(var(--radius));
 `;
-
-const CircularText = () => {
-  const text = "Best Interior Firm Since 2001 •";
-
-  return (
-    <Container>
-      <RotatingCircularText>
-        {text.split("").map((char, index) => (
-          <Char
-            key={index}
-            style={{ "--char-index": index }}
-            className="secondary-font"
-          >
-            {char}
-          </Char>
-        ))}
-      </RotatingCircularText>
-    </Container>
-  );
-};
-
-export default CircularText;

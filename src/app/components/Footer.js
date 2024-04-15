@@ -327,6 +327,7 @@ const LogoNameWrapper = styled(Link)`
   align-items: center;
   gap: 10px;
   text-decoration: none;
+  transition: all 0.5s ease-in-out;
 `;
 
 const Logo = styled(Image)`

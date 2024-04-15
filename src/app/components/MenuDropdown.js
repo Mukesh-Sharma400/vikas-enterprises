@@ -17,6 +17,18 @@ export const MenuDropdown = ({ menuOpened, setMenuOpened }) => {
     { path: "/aboutus", label: "About Us" },
   ];
 
+  const handleRouteClick = ({ page }) => {
+    setTimeout(() => {
+      router.push(page);
+    }, 500);
+    setMenuOpened(false);
+  };
+
+  const handleButtonClick = () => {
+    setMenuOpened(false);
+    setShowContactPopup(true);
+  };
+
   useEffect(() => {
     const handleDocumentClick = (event) => {
       if (
@@ -40,18 +52,6 @@ export const MenuDropdown = ({ menuOpened, setMenuOpened }) => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [menuOpened]);
-
-  const handleRouteClick = ({ page }) => {
-    setTimeout(() => {
-      router.push(page);
-    }, 500);
-    setMenuOpened(false);
-  };
-
-  const handleButtonClick = () => {
-    setMenuOpened(false);
-    setShowContactPopup(true);
-  };
 
   return (
     <>
