@@ -146,7 +146,7 @@ export const Header = () => {
 
 const DisplayWrapper = styled.div`
   width: 95%;
-  max-width: 1216px;
+  max-width: 1296px;
   position: fixed;
   top: 20px;
   left: 50%;
@@ -158,8 +158,8 @@ const DisplayWrapper = styled.div`
   border-radius: 40px;
   background: #eaf1fb90;
   box-shadow: 0 4px 30px rgba(225, 225, 225, 0.5);
-  backdrop-filter: blur(10.1px);
-  -webkit-backdrop-filter: blur(10.1px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(225, 225, 225, 1);
   z-index: 2;
   transition: all 0.5s ease-in-out;
@@ -353,8 +353,8 @@ const PagesDropdownContentWrapper = styled.div`
   border-radius: 20px;
   background: ${({ theme }) => theme.globalColors.ternaryColor};
   box-shadow: 0 4px 30px rgba(225, 225, 225, 0.5);
-  backdrop-filter: blur(10.1px);
-  -webkit-backdrop-filter: blur(10.1px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(225, 225, 225, 1);
   opacity: ${(props) => (props.opacity === false ? 0 : 1)};
   z-index: 2;

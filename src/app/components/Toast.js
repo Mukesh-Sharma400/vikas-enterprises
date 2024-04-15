@@ -15,8 +15,8 @@ const DisplayWrapper = styled.div`
   color: ${({ theme }) => theme.globalColors.primaryColor};
   background-color: ${({ theme }) => theme.globalColors.ternaryColor};
   box-shadow: 0 4px 30px rgba(225, 225, 225, 0.5);
-  backdrop-filter: blur(10.1px);
-  -webkit-backdrop-filter: blur(10.1px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(225, 225, 225, 1);
   transition: all 0.5s ease-in-out;
 
