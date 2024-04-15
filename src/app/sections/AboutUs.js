@@ -64,7 +64,7 @@ const AboutUsImage = styled(Image)`
   transition: all 0.5s ease-in-out;
 
   @media (max-width: 768px) {
-    height: 550px;
+    height: 700px;
   }
 `;
 
