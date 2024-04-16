@@ -19,7 +19,7 @@ export const AboutUs = () => {
       <DisplayWrapper>
         <AboutUsImage src={aboutus} alt="About Us" />
         <ContentWrapper>
-          <InnerContentWrapper data-aos="zoom-in-up">
+          <InnerContentWrapper data-aos="zoom-in-up" data-aos-delay="1000">
             <AboutUsHeading>{sectionData.smallHeading}</AboutUsHeading>
             <Heading>{sectionData.heading}</Heading>
             <Description>{sectionData.description}</Description>
