@@ -84,7 +84,7 @@ export const Footer = () => {
     "Electrical Work",
     "Fabrication Work",
     "Painting Work",
-    "POP Work",
+    "False Ceiling",
     "Carpenter Work",
     "Modular Kitchen",
     "Turnkey Contractor",

@@ -2,7 +2,6 @@ import Image from "next/image";
 import Slider from "react-slick";
 import styled from "styled-components";
 import turnkey from "../../../public/assets/turnkey.jpg";
-import popWork from "../../../public/assets/pop-work.jpg";
 import painting from "../../../public/assets/painting.png";
 import civilWork from "../../../public/assets/civil-work.png";
 import electrical from "../../../public/assets/electrical.jpg";
@@ -11,6 +10,7 @@ import modular from "../../../public/assets/modular-kitchen.jpg";
 import fabrication from "../../../public/assets/fabrication.jpg";
 import interior from "../../../public/assets/interior-design.jpg";
 import flooring from "../../../public/assets/tiling-flooring.jpg";
+import falseCeiling from "../../../public/assets/false-ceiling.jpg";
 
 export const Services = () => {
   const settings = {
@@ -53,7 +53,7 @@ export const Services = () => {
     },
     {
       image: flooring,
-      title: "Tiling And Flooring",
+      title: "Tiling & Flooring",
     },
     {
       image: electrical,
@@ -68,8 +68,8 @@ export const Services = () => {
       title: "Painting Work",
     },
     {
-      image: popWork,
-      title: "POP Work",
+      image: falseCeiling,
+      title: "False Ceiling",
     },
     {
       image: carpenters,
@@ -200,6 +200,8 @@ const MySlide = styled.div`
   border-radius: 15px;
   overflow: hidden;
   background-color: ${({ theme }) => theme.globalColors.ternaryColor};
+  filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04))
+    drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
   transition: all 0.5s ease-in-out;
 `;
 
