@@ -191,7 +191,6 @@ const DisplayWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 50px;
-  margin-top: 50px;
   padding: 50px 5%;
   border-radius: 40px 40px 0 0;
   background-color: ${({ theme }) => theme.globalColors.primaryColor};
