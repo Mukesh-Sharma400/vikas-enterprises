@@ -112,6 +112,7 @@ const DisplayWrapper = styled.div`
   width: 100%;
   margin-top: 50px;
   padding-bottom: 50px;
+  border-radius: 40px;
   background-color: ${({ theme }) => theme.globalColors.primaryColor};
   transition: all 0.5s ease-in-out;
 `;
@@ -259,7 +260,7 @@ const StyledArrowButton = styled.button`
   border: none;
   cursor: pointer;
   z-index: 1;
-  transition: all 0.3s ease;
+  transition: all 0.3s ease-in-out;
 
   &:hover {
     transform: translateY(-50%) scale(1.1);
