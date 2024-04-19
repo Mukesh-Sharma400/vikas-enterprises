@@ -96,10 +96,10 @@ export const Services = () => {
         {servicesData.map((service, index) => (
           <MySlideWrapper key={index}>
             <MySlide>
+              <SlideTitle>{service.title}</SlideTitle>
               <SlideImageWrapper>
                 <SlideImage src={service.image} alt={service.title} />
               </SlideImageWrapper>
-              <SlideTitle>{service.title}</SlideTitle>
             </MySlide>
           </MySlideWrapper>
         ))}
@@ -198,8 +198,8 @@ const MySlideWrapper = styled.div`
 const MySlide = styled.div`
   width: 100%;
   height: 100%;
-  border-radius: 15px;
-  overflow: hidden;
+  padding: 10px;
+  border-radius: 20px;
   background-color: ${({ theme }) => theme.globalColors.ternaryColor};
   filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04))
     drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
@@ -211,7 +211,6 @@ const SlideImageWrapper = styled.div`
   height: auto;
   border-radius: 15px;
   overflow: hidden;
-  margin-bottom: 15px;
   transition: all 0.5s ease-in-out;
 `;
 
@@ -228,7 +227,7 @@ const SlideImage = styled(Image)`
 
 const SlideTitle = styled.p`
   text-align: center;
-  font-size: 25px;
+  font-size: 23px;
   color: black;
   padding-bottom: 10px;
   transition: all 0.5s ease-in-out;
