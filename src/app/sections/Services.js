@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import styled from "styled-components";
 import turnkey from "../../../public/assets/turnkey.jpg";
 import painting from "../../../public/assets/painting.png";
-import civilWork from "../../../public/assets/civil-work.png";
+import civilWork from "../../../public/assets/civil-work.jpg";
 import electrical from "../../../public/assets/electrical.jpg";
 import carpenters from "../../../public/assets/carpenters.jpg";
 import modular from "../../../public/assets/modular-kitchen.jpg";
