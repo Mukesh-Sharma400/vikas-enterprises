@@ -61,8 +61,7 @@ const AboutUsImage = styled(Image)`
   height: 100%;
   border-radius: 40px;
   object-fit: cover;
-  filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04))
-    drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   transition: all 0.5s ease-in-out;
 
   @media (max-width: 768px) {

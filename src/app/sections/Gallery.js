@@ -147,8 +147,7 @@ const SmallSeeMoreBtn = styled.button`
   font-weight: 600;
   color: ${({ theme }) => theme.globalColors.ternaryColor};
   background-color: ${({ theme }) => theme.globalColors.primaryColor};
-  filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04))
-    drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius: 40px;
   width: 150px;
   height: 40px;
@@ -165,8 +164,7 @@ const SeeMoreBtn = styled.button`
   font-weight: 600;
   color: ${({ theme }) => theme.globalColors.ternaryColor};
   background-color: ${({ theme }) => theme.globalColors.primaryColor};
-  filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04))
-    drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius: 40px;
   width: 180px;
   height: 50px;
@@ -273,6 +271,7 @@ const StyledImage = styled(Image)`
   height: 100%;
   object-fit: cover;
   border-radius: 15px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   transition: all 0.5s ease-in-out;
 
   &:hover {

@@ -245,6 +245,8 @@ const ContactBtn = styled.button`
   font-weight: 600;
   color: ${({ theme }) => theme.globalColors.primaryColor};
   background-color: ${({ theme }) => theme.globalColors.ternaryColor};
+  filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04))
+    drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
   border-radius: 40px;
   width: 220px;
   height: 50px;
