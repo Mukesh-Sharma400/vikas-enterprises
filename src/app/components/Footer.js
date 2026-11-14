@@ -101,8 +101,7 @@ export const Footer = () => {
       <BottomWrapper>
         <LeftSide>
           <p>
-            © {currentYear} <span>Vikas Enterprises</span>. All rights
-            reserved.
+            © {currentYear} <span>Vikas Enterprises</span>. All rights reserved.
           </p>
         </LeftSide>
         <RightSide>
