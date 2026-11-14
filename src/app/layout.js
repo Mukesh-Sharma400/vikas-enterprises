@@ -3,33 +3,60 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 
 import "./globals.css";
 import { Providers } from "./providers";
+import { business } from "@/app/data/site";
 import { Analytics } from "@vercel/analytics/react";
 
+const siteUrl = business.siteUrl;
+const siteTitle = business.name;
+const siteDescription = business.description;
+
 export const metadata = {
-  title: "Vikas Enterprises",
-  description:
-    "Vikas Enterprises, founded in 2001, has become a trusted leader in Navi Mumbai's renovation scene. We specialize in all aspects of interior decoration, from Ghansoli to beyond.",
-  keywords:
-    "interior design, creative spaces, home decor, aesthetic designs, innovative interiors",
-  author: "Mukesh Sharma",
-  image: "./icon.png",
-  url: "https://vikas-enterprises.vercel.app",
-  type: "website",
-  ogTitle: "Vikas Enterprises",
-  ogDescription:
-    "Vikas Enterprises, founded in 2001, has become a trusted leader in Navi Mumbai's renovation scene. We specialize in all aspects of interior decoration, from Ghansoli to beyond.",
-  ogImage: "./icon.png",
-  twitterTitle: "Vikas Enterprises",
-  twitterDescription:
-    "Vikas Enterprises, founded in 2001, has become a trusted leader in Navi Mumbai's renovation scene. We specialize in all aspects of interior decoration, from Ghansoli to beyond.",
-  twitterImage: "./icon.png",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: siteTitle,
+    template: `%s | ${siteTitle}`,
+  },
+  description: siteDescription,
+  keywords: [
+    "interior design",
+    "interior designer Navi Mumbai",
+    "renovation",
+    "modular kitchen",
+    "false ceiling",
+    "turnkey contractor",
+    "Ghansoli",
+    "home decor",
+  ],
+  authors: [{ name: "Mukesh Sharma", url: "https://mukesh-sharma.vercel.app" }],
+  openGraph: {
+    type: "website",
+    url: siteUrl,
+    siteName: siteTitle,
+    title: siteTitle,
+    description: siteDescription,
+    locale: "en_IN",
+    images: [
+      {
+        url: "/assets/hero-background.webp",
+        width: 1920,
+        height: 1080,
+        type: "image/webp",
+        alt: "Vikas Enterprises interior design",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteTitle,
+    description: siteDescription,
+    images: ["/assets/hero-background.webp"],
+  },
 };
 
 export default function Layout({ children }) {
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="./icon2.png" type="image/png" />
         <link
           rel="stylesheet"
           type="text/css"
@@ -45,11 +72,6 @@ export default function Layout({ children }) {
       <body>
         <Providers>{children}</Providers>
         <Analytics />
-        <script
-          src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-          integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-          crossOrigin="anonymous"
-        ></script>
       </body>
     </html>
   );

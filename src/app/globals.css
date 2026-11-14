@@ -9,20 +9,20 @@
 
 body {
   font-family: "Poppins", sans-serif !important;
-  background-color: #eaf1fb !important;
+  background-color: var(--color-primary-light) !important;
 }
 
 ::-webkit-scrollbar {
   width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #eaf1fb;
+  background: var(--color-primary-light);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgb(200, 200, 200);
+  background: var(--color-scrollbar-thumb);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(154, 154, 154);
+  background: var(--color-scrollbar-thumb-hover);
 }
 
 .secondary-font {
@@ -52,6 +52,6 @@ textarea {
 
 .custom-tooltip {
   font-weight: 500 !important;
-  --bs-tooltip-bg: #eaf1fb !important;
-  --bs-tooltip-color: #207cf2 !important;
+  --bs-tooltip-bg: var(--color-primary-light) !important;
+  --bs-tooltip-color: var(--color-primary) !important;
 }

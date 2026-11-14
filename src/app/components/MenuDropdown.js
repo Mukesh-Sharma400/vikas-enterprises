@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { routes } from "@/app/data/site";
 import { ContactPopup } from "./ContactPopup";
 import { useEffect, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
@@ -9,14 +10,6 @@ export const MenuDropdown = ({ menuOpened, setMenuOpened }) => {
   const pathName = usePathname();
   const [showContactPopup, setShowContactPopup] = useState(false);
 
-  const routesData = [
-    { path: "/", label: "Home" },
-    { path: "/services", label: "Services" },
-    { path: "/projects", label: "Projects" },
-    { path: "/gallery", label: "Gallery" },
-    { path: "/aboutus", label: "About Us" },
-  ];
-
   const handleRouteClick = ({ page }) => {
     setTimeout(() => {
       router.push(page);
@@ -24,7 +17,7 @@ export const MenuDropdown = ({ menuOpened, setMenuOpened }) => {
     setMenuOpened(false);
   };
 
-  const handleButtonClick = () => {
+  const openContactPopup = () => {
     setMenuOpened(false);
     setShowContactPopup(true);
   };
@@ -51,13 +44,13 @@ export const MenuDropdown = ({ menuOpened, setMenuOpened }) => {
       document.removeEventListener("click", handleDocumentClick);
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [menuOpened]);
+  }, [menuOpened, setMenuOpened]);
 
   return (
     <>
-      <DisplayWrapper ref={menuRef} menuOpened={menuOpened}>
+      <DisplayWrapper ref={menuRef} $menuOpened={menuOpened}>
         <RoutesWrapper>
-          {routesData.map((page, index) => (
+          {routes.map((page, index) => (
             <Route
               key={index}
               className={pathName === page.path ? "active" : ""}
@@ -66,7 +59,7 @@ export const MenuDropdown = ({ menuOpened, setMenuOpened }) => {
               {page.label}
             </Route>
           ))}
-          <ContactBtn onClick={handleButtonClick}>Contact</ContactBtn>
+          <ContactBtn onClick={openContactPopup}>Contact</ContactBtn>
         </RoutesWrapper>
       </DisplayWrapper>
       {showContactPopup && (
@@ -84,7 +77,7 @@ const DisplayWrapper = styled.div`
   width: 95%;
   max-width: 1216px;
   position: fixed;
-  top: ${(props) => (props.menuOpened ? "100px" : "-400px")};
+  top: ${(props) => (props.$menuOpened ? "100px" : "-400px")};
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -92,16 +85,16 @@ const DisplayWrapper = styled.div`
   justify-content: space-between;
   padding: 10px;
   border-radius: 20px;
-  background-color: ${({ theme }) => theme.globalColors.ternaryColor};
-  box-shadow: 0 4px 30px rgba(225, 225, 225, 0.5);
+  background-color: ${({ theme }) => theme.colors.primaryLight};
+  box-shadow: ${({ theme }) => theme.shadows.glass};
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(225, 225, 225, 1);
+  border: 1px solid ${({ theme }) => theme.colors.glassBorder};
   z-index: 2;
   transition: all 0.5s ease-in-out;
 
   @media (max-width: 600px) {
-    top: ${(props) => (props.menuOpened ? "90px" : "-400px")};
+    top: ${(props) => (props.$menuOpened ? "90px" : "-400px")};
   }
 `;
 
@@ -123,8 +116,8 @@ const Route = styled.button`
   align-items: center;
   justify-content: center;
   font-size: 18px;
-  color: ${({ theme }) => theme.globalColors.primaryColor};
-  background-color: ${({ theme }) => theme.globalColors.ternaryColor};
+  color: ${({ theme }) => theme.colors.primary};
+  background-color: ${({ theme }) => theme.colors.primaryLight};
   text-decoration: none;
   transition: all 0.5s ease-in-out;
 
@@ -136,8 +129,8 @@ const Route = styled.button`
 const ContactBtn = styled.button`
   font-size: 18px;
   font-weight: 600;
-  color: ${({ theme }) => theme.globalColors.ternaryColor};
-  background-color: ${({ theme }) => theme.globalColors.primaryColor};
+  color: ${({ theme }) => theme.colors.primaryLight};
+  background-color: ${({ theme }) => theme.colors.primary};
   border-radius: 15px;
   width: 100%;
   height: 40px;

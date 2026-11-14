@@ -1,3 +1,5 @@
+"use client";
+
 import styled from "styled-components";
 import { useRouter } from "next/navigation";
 
@@ -8,7 +10,7 @@ export const WorkInProgress = () => {
     <DisplayWrapper>
       <ContentWrapper data-aos="fade-up">
         <Message>Page Is Under Development</Message>
-        <Button onClick={() => router.push("/")}>Go to Home</Button>
+        <HomeButton onClick={() => router.push("/")}>Go to Home</HomeButton>
       </ContentWrapper>
     </DisplayWrapper>
   );
@@ -48,9 +50,8 @@ const ContentWrapper = styled.div`
 const Message = styled.p`
   max-width: 420px;
   font-size: 60px;
-  color: ${({ theme }) => theme.globalColors.primaryColor};
-  filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.05))
-    drop-shadow(0 4px 3px rgb(0 0 0 / 0.2));
+  color: ${({ theme }) => theme.colors.primary};
+  filter: ${({ theme }) => theme.shadows.dropLgStrong};
   transition: all 0.5s ease-in-out;
 
   @media (max-width: 1200px) {
@@ -70,17 +71,16 @@ const Message = styled.p`
   }
 `;
 
-const Button = styled.button`
+const HomeButton = styled.button`
   font-size: 20px;
   font-weight: 600;
-  color: ${({ theme }) => theme.globalColors.ternaryColor};
-  background-color: ${({ theme }) => theme.globalColors.primaryColor};
+  color: ${({ theme }) => theme.colors.primaryLight};
+  background-color: ${({ theme }) => theme.colors.primary};
   border-radius: 40px;
   width: 180px;
   min-width: 180px;
   height: 50px;
-  filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1))
-    drop-shadow(0 1px 1px rgb(0 0 0 / 0.06));
+  filter: ${({ theme }) => theme.shadows.dropSm};
   transition: all 0.5s ease-in-out;
 
   @media (max-width: 768px) {

@@ -4,7 +4,7 @@ import { Header } from "./Header";
 import { Footer } from "./Footer";
 import styled from "styled-components";
 
-export default function BaseLayout({ children }) {
+export function BaseLayout({ children }) {
   return (
     <DisplayWrapper>
       <Header />

@@ -1,37 +1,69 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Vikas Enterprises
+
+Website for **Vikas Enterprises**, an interior design and renovation firm serving Navi Mumbai since 2001.
+
+**Live site:** [vikas-enterprises.vercel.app](https://vikas-enterprises.vercel.app)
+
+## Tech Stack
+
+- [Next.js 14](https://nextjs.org/) (App Router) with React 18
+- [styled-components](https://styled-components.com/) and Bootstrap 5 / Bootstrap Icons
+- [EmailJS](https://www.emailjs.com/) for the contact form
+- AOS (scroll animations), react-slick (services carousel), react-countup
+- Deployed on [Vercel](https://vercel.com/) with Vercel Analytics
 
 ## Getting Started
 
-First, run the development server:
+**Requirements:** Node.js 24.x (see `engines` in `package.json`).
 
 ```bash
+npm install
+cp .env.example .env.local   # then fill in the EmailJS values
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+| Script                 | Description                                  |
+| ---------------------- | -------------------------------------------- |
+| `npm run dev`          | Start the development server                 |
+| `npm run build`        | Create a production build (also runs ESLint) |
+| `npm start`            | Serve the production build                   |
+| `npm run lint`         | Run ESLint                                   |
+| `npm run format`       | Format all files with Prettier               |
+| `npm run format:check` | Check formatting without changing files      |
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Environment Variables
 
-## Learn More
+The contact form sends email through EmailJS. Set these in `.env.local` locally and in **Vercel → Project → Settings → Environment Variables** for deployments:
 
-To learn more about Next.js, take a look at the following resources:
+| Variable                          | Description         |
+| --------------------------------- | ------------------- |
+| `NEXT_PUBLIC_EMAILJS_SERVICE_ID`  | EmailJS service ID  |
+| `NEXT_PUBLIC_EMAILJS_TEMPLATE_ID` | EmailJS template ID |
+| `NEXT_PUBLIC_EMAILJS_PUBLIC_KEY`  | EmailJS public key  |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+These values are visible in the browser by design. Restrict the allowed domains in the EmailJS dashboard to prevent misuse.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Project Structure
 
-## Deploy on Vercel
+```
+public/assets/          Images (WebP)
+src/app/
+├── (root)/             Pages: home, services, projects, gallery, about-us
+├── components/         Header, footer, menu, contact popup, toast, ...
+├── sections/           Home page sections (hero, counters, about, services, gallery)
+├── data/site.js        Business details, navigation, services and stats
+├── colors.js           Colour and shadow tokens (theme.colors / theme.shadows)
+├── layout.js           Root layout and site-wide SEO metadata
+├── sitemap.js          Generates /sitemap.xml
+└── robots.js           Generates /robots.txt
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Updating content
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-"# vikas-enterprises" 
+Most content lives in **`src/app/data/site.js`**: phone, email, address, social links, navigation, the list of services, and the homepage counters (projects, reviews, happy rate). Edit it there and every page that uses it updates.
+
+## Credits
+
+Designed and developed by [Mukesh Sharma](https://mukesh-sharma.vercel.app).

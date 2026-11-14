@@ -1,11 +1,13 @@
-"use client";
+import { Hero } from "@/app/sections/Hero";
+import { AboutUs } from "@/app/sections/AboutUs";
+import { Gallery } from "@/app/sections/Gallery";
+import { Counting } from "@/app/sections/Counting";
+import { Services } from "@/app/sections/Services";
+import { BaseLayout } from "@/app/components/BaseLayout";
 
-import { Hero } from "../sections/Hero";
-import { AboutUs } from "../sections/AboutUs";
-import { Gallery } from "../sections/Gallery";
-import { Counting } from "../sections/Counting";
-import { Services } from "../sections/Services";
-import BaseLayout from "@/app/components/BaseLayout";
+export const metadata = {
+  alternates: { canonical: "/" },
+};
 
 export default function Home() {
   return (

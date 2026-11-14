@@ -2,10 +2,11 @@ import Link from "next/link";
 import Image from "next/image";
 import styled from "styled-components";
 import { usePathname } from "next/navigation";
+import { routes } from "@/app/data/site";
 import { MenuDropdown } from "./MenuDropdown";
 import { ContactPopup } from "./ContactPopup";
-import logo from "../../../public/assets/logo.png";
-import { useEffect, useRef, useState } from "react";
+import logo from "#/logo.webp";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 export const Header = () => {
   const menuRef = useRef();
@@ -15,41 +16,56 @@ export const Header = () => {
   const [pagesDropdown, setPagesDropdown] = useState(false);
   const [showContactPopup, setShowContactPopup] = useState(false);
 
-  const routesData = [
-    { path: "/", label: "Home", width: 50 },
-    { path: "/services", label: "Services", width: 70 },
-    { path: "/projects", label: "Projects", width: 65 },
-    { path: "/gallery", label: "Gallery", width: 60 },
-    { path: "/aboutus", label: "About Us", width: 75 },
-  ];
-
-  const handleMenu = () => {
+  const toggleMenu = () => {
     setMenuOpened(!menuOpened);
   };
 
+  const dropdownTimerRef = useRef(null);
+  const toggleRef = useRef(null);
+
+  const clearDropdownTimer = useCallback(() => {
+    if (dropdownTimerRef.current) {
+      clearTimeout(dropdownTimerRef.current);
+      dropdownTimerRef.current = null;
+    }
+  }, []);
+
   const handleOpenDropdown = () => {
-    setTimeout(() => {
-      setOpacity(true);
-    }, 100);
+    // Cancel any pending close so it can't unmount the freshly opened dropdown
+    clearDropdownTimer();
     setPagesDropdown(true);
+    dropdownTimerRef.current = setTimeout(() => {
+      setOpacity(true);
+      dropdownTimerRef.current = null;
+    }, 100);
   };
 
-  const handleCloseDropdown = () => {
-    setTimeout(() => {
-      setPagesDropdown(false);
-    }, 1000);
+  const handleCloseDropdown = useCallback(() => {
+    clearDropdownTimer();
     setOpacity(false);
-  };
+    // Wait for the fade-out transition before unmounting
+    dropdownTimerRef.current = setTimeout(() => {
+      setPagesDropdown(false);
+      dropdownTimerRef.current = null;
+    }, 1000);
+  }, [clearDropdownTimer]);
+
+  // Clear any pending timer on unmount
+  useEffect(() => clearDropdownTimer, [clearDropdownTimer]);
 
   useEffect(() => {
+    // Only listen for outside clicks / scroll while the dropdown is open
+    if (!pagesDropdown) return;
+
     const handleDocumentClick = (event) => {
+      const target = event.target;
       if (
-        pagesDropdown &&
-        menuRef.current &&
-        !menuRef.current.contains(event.target)
+        menuRef.current?.contains(target) ||
+        toggleRef.current?.contains(target)
       ) {
-        handleCloseDropdown();
+        return;
       }
+      handleCloseDropdown();
     };
 
     const handleScroll = () => {
@@ -57,20 +73,20 @@ export const Header = () => {
     };
 
     document.addEventListener("click", handleDocumentClick);
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
       document.removeEventListener("click", handleDocumentClick);
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [pagesDropdown]);
+  }, [pagesDropdown, handleCloseDropdown]);
 
   return (
     <>
       <DisplayWrapper>
         <ContentWrapper>
           <RoutesWrapper>
-            {routesData.map((page, index) => (
+            {routes.map((page, index) => (
               <Route
                 key={index}
                 href={page.path}
@@ -83,26 +99,29 @@ export const Header = () => {
             ))}
             <PagesDropdownWrapper>
               <PagesDropdown
+                ref={toggleRef}
                 data-aos="fade-right"
                 onClick={
-                  pagesDropdown ? handleCloseDropdown : handleOpenDropdown
+                  pagesDropdown && opacity
+                    ? handleCloseDropdown
+                    : handleOpenDropdown
                 }
               >
-                All Pages <i class="bi bi-caret-down-fill"></i>
+                All Pages <i className="bi bi-caret-down-fill"></i>
               </PagesDropdown>
               {pagesDropdown ? (
-                <PagesDropdownContentWrapper ref={menuRef} opacity={opacity}>
-                  {routesData.map((page, index) => (
-                    <Route2
+                <PagesDropdownContentWrapper ref={menuRef} $opacity={opacity}>
+                  {routes.map((page, index) => (
+                    <DropdownRoute
                       key={index}
                       href={page.path}
                       className={pathName === page.path ? "active" : ""}
                       data-aos="fade-down"
                       data-aos-delay={`${(index + 1) * 100}`}
-                      style={{ width: page.width }}
+                      style={{ width: page.dropdownWidth }}
                     >
                       {page.label}
-                    </Route2>
+                    </DropdownRoute>
                   ))}
                 </PagesDropdownContentWrapper>
               ) : null}
@@ -124,11 +143,11 @@ export const Header = () => {
             >
               Contact
             </ContactBtn>
-            <Button onClick={handleMenu} menuOpened={menuOpened}>
+            <MenuToggle onClick={toggleMenu} $menuOpened={menuOpened}>
               <div className="bar bar--1"></div>
               <div className="bar bar--2"></div>
               <div className="bar bar--3"></div>
-            </Button>
+            </MenuToggle>
           </ButtonsWrapper>
         </ContentWrapper>
       </DisplayWrapper>
@@ -156,11 +175,11 @@ const DisplayWrapper = styled.div`
   justify-content: space-between;
   padding: 10px;
   border-radius: 40px;
-  background: #eaf1fb90;
-  box-shadow: 0 4px 30px rgba(225, 225, 225, 0.5);
+  background: ${({ theme }) => theme.colors.primaryLightTranslucent};
+  box-shadow: ${({ theme }) => theme.shadows.glass};
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(225, 225, 225, 1);
+  border: 1px solid ${({ theme }) => theme.colors.glassBorder};
   z-index: 2;
   transition: all 0.5s ease-in-out;
 `;
@@ -206,7 +225,7 @@ const Logo = styled(Image)`
 const Name = styled.p`
   font-size: 30px;
   font-weight: 600;
-  color: ${({ theme }) => theme.globalColors.primaryColor};
+  color: ${({ theme }) => theme.colors.primary};
   transition: all 0.5s ease-in-out;
 
   @media (max-width: 600px) {
@@ -227,7 +246,7 @@ const RoutesWrapper = styled.div`
 
 const Route = styled(Link)`
   font-size: 16px;
-  color: ${({ theme }) => theme.globalColors.primaryColor};
+  color: ${({ theme }) => theme.colors.primary};
   text-decoration: none;
   transition: all 0.5s ease-in-out;
 
@@ -254,8 +273,8 @@ const ButtonsWrapper = styled.div`
 const ContactBtn = styled.button`
   font-size: 20px;
   font-weight: 600;
-  color: ${({ theme }) => theme.globalColors.ternaryColor};
-  background-color: ${({ theme }) => theme.globalColors.primaryColor};
+  color: ${({ theme }) => theme.colors.primaryLight};
+  background-color: ${({ theme }) => theme.colors.primary};
   border-radius: 40px;
   width: 180px;
   height: 50px;
@@ -266,7 +285,7 @@ const ContactBtn = styled.button`
   }
 `;
 
-const Button = styled.button`
+const MenuToggle = styled.button`
   display: none;
   width: 30px;
   min-width: 30px;
@@ -294,13 +313,15 @@ const Button = styled.button`
     height: var(--height-bar);
     width: 100%;
     border-radius: 0.5rem;
-    background-color: ${({ theme }) => theme.globalColors.primaryColor};
+    background-color: ${({ theme }) => theme.colors.primary};
   }
 
   .bar--1 {
     top: var(--pos-y-bar-one);
     transform: rotate(var(--rotate-bar-one));
-    transition: top 200ms 100ms, transform 100ms;
+    transition:
+      top 200ms 100ms,
+      transform 100ms;
   }
 
   .bar--2 {
@@ -311,11 +332,13 @@ const Button = styled.button`
   .bar--3 {
     bottom: var(--pos-y-bar-three);
     transform: rotate(var(--rotate-bar-three));
-    transition: bottom 200ms 100ms, transform 100ms;
+    transition:
+      bottom 200ms 100ms,
+      transform 100ms;
   }
 
   ${(props) =>
-    props.menuOpened &&
+    props.$menuOpened &&
     `
     --pos-y-bar-one: calc(var(--gap) + var(--height-bar));
     --pos-y-bar-three: calc(var(--gap) + var(--height-bar));
@@ -337,7 +360,7 @@ const PagesDropdownWrapper = styled.div`
 
 const PagesDropdown = styled.p`
   font-size: 16px;
-  color: ${({ theme }) => theme.globalColors.primaryColor};
+  color: ${({ theme }) => theme.colors.primary};
   cursor: pointer;
   transition: all 0.5s ease-in-out;
 `;
@@ -351,22 +374,22 @@ const PagesDropdownContentWrapper = styled.div`
   gap: 16px;
   padding: 20px 10px;
   border-radius: 20px;
-  background: ${({ theme }) => theme.globalColors.ternaryColor};
-  box-shadow: 0 4px 30px rgba(225, 225, 225, 0.5);
+  background: ${({ theme }) => theme.colors.primaryLight};
+  box-shadow: ${({ theme }) => theme.shadows.glass};
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(225, 225, 225, 1);
-  opacity: ${(props) => (props.opacity === false ? 0 : 1)};
+  border: 1px solid ${({ theme }) => theme.colors.glassBorder};
+  opacity: ${(props) => (props.$opacity === false ? 0 : 1)};
   z-index: 2;
   transition: all 0.5s ease-in-out;
 `;
 
-const Route2 = styled(Link)`
+const DropdownRoute = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 16px;
-  color: ${({ theme }) => theme.globalColors.primaryColor};
+  color: ${({ theme }) => theme.colors.primary};
   text-decoration: none;
   transition: all 0.5s ease-in-out;
 

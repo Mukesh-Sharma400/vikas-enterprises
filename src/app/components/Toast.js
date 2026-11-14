@@ -12,12 +12,12 @@ const DisplayWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${({ theme }) => theme.globalColors.primaryColor};
-  background-color: ${({ theme }) => theme.globalColors.ternaryColor};
-  box-shadow: 0 4px 30px rgba(225, 225, 225, 0.5);
+  color: ${({ theme }) => theme.colors.primary};
+  background-color: ${({ theme }) => theme.colors.primaryLight};
+  box-shadow: ${({ theme }) => theme.shadows.glass};
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(225, 225, 225, 1);
+  border: 1px solid ${({ theme }) => theme.colors.glassBorder};
   transition: all 0.5s ease-in-out;
 
   @media (max-width: 400px) {
