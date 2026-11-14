@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components";
 
-export const CircularText = () => {
+export const CircularRotatingText = () => {
   const text = "Best Interior Firm Since 2001 •";
 
   return (
@@ -44,7 +44,7 @@ const RotatingCircularText = styled.h1`
   text-transform: uppercase;
   font-size: calc(var(--font-size) * 1rem);
   position: relative;
-  color: ${({ theme }) => theme.globalColors.ternaryColor};
+  color: ${({ theme }) => theme.colors.primaryLight};
   animation: ${spinAnimation} 25s infinite linear;
 `;
 

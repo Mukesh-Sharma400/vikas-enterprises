@@ -1,8 +1,10 @@
+"use client";
+
 import Image from "next/image";
 import { useState } from "react";
 import styled from "styled-components";
-import { ContactPopup } from "../components/ContactPopup";
-import aboutus from "../../../public/assets/aboutus-section.jpg";
+import { ContactPopup } from "@/app/components/ContactPopup";
+import aboutUsImage from "#/about-us.webp";
 
 export const AboutUs = () => {
   const [showContactPopup, setShowContactPopup] = useState(false);
@@ -11,13 +13,13 @@ export const AboutUs = () => {
     smallHeading: "About Us",
     heading: "Modernity paired with the beauty of simplicity.",
     description:
-      "Vikas Enterprises is a team of skilled interior designers we have a knack for seeing the world in a beautiful light. Our expertise allows us to transform spaces into captivating environments that reflect our unique style and perspective, delighting all who encounter our work.",
+      "Vikas Enterprises is a team of skilled interior designers with a knack for seeing the world in a beautiful light. Our expertise allows us to transform spaces into captivating environments that reflect our unique style and perspective, delighting all who encounter our work.",
   };
 
   return (
     <>
       <DisplayWrapper>
-        <AboutUsImage src={aboutus} alt="About Us" />
+        <AboutUsImage src={aboutUsImage} alt="About Us" />
         <ContentWrapper>
           <InnerContentWrapper data-aos="zoom-in-up" data-aos-delay="1000">
             <AboutUsHeading>{sectionData.smallHeading}</AboutUsHeading>
@@ -46,7 +48,7 @@ const DisplayWrapper = styled.div`
   justify-content: center;
   padding: 0px 5%;
   position: relative;
-  background-color: ${({ theme }) => theme.globalColors.ternaryColor};
+  background-color: ${({ theme }) => theme.colors.primaryLight};
   transition: all 0.5s ease-in-out;
 
   @media (max-width: 768px) {
@@ -61,7 +63,7 @@ const AboutUsImage = styled(Image)`
   height: 100%;
   border-radius: 40px;
   object-fit: cover;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  box-shadow: ${({ theme }) => theme.shadows.card};
   transition: all 0.5s ease-in-out;
 
   @media (max-width: 768px) {
@@ -96,11 +98,11 @@ const InnerContentWrapper = styled.div`
   justify-content: space-between;
   padding: 30px;
   border-radius: 20px;
-  background: #eaf1fb90;
-  box-shadow: 0 4px 30px rgba(225, 225, 225, 0.5);
+  background: ${({ theme }) => theme.colors.primaryLightTranslucent};
+  box-shadow: ${({ theme }) => theme.shadows.glass};
   backdrop-filter: blur(7px);
   -webkit-backdrop-filter: blur(7px);
-  border: 1px solid rgba(225, 225, 225, 1);
+  border: 1px solid ${({ theme }) => theme.colors.glassBorder};
   transition: all 0.5s ease-in-out;
 
   @media (max-width: 768px) {
@@ -110,7 +112,7 @@ const InnerContentWrapper = styled.div`
 
 const AboutUsHeading = styled.p`
   font-size: 20px;
-  color: black;
+  color: ${({ theme }) => theme.colors.text};
   text-transform: uppercase;
   letter-spacing: 2px;
   transition: all 0.5s ease-in-out;
@@ -127,7 +129,7 @@ const AboutUsHeading = styled.p`
 `;
 
 const Heading = styled.h1`
-  color: ${({ theme }) => theme.globalColors.primaryColor};
+  color: ${({ theme }) => theme.colors.primary};
   transition: all 0.5s ease-in-out;
 
   @media (max-width: 1024px) {
@@ -141,7 +143,7 @@ const Heading = styled.h1`
 const Description = styled.p`
   font-size: 20px;
   letter-spacing: 1px;
-  color: black;
+  color: ${({ theme }) => theme.colors.text};
   transition: all 0.5s ease-in-out;
 
   @media (max-width: 1200px) {

@@ -1,7 +1,10 @@
+"use client";
+
 import CountUp from "react-countup";
 import styled from "styled-components";
 import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
+import { business, stats } from "@/app/data/site";
 
 export const Counting = () => {
   const currentYear = new Date().getFullYear();
@@ -9,15 +12,13 @@ export const Counting = () => {
   const { ref, inView } = useInView({
     threshold: 0.5,
   });
-  const [screenWidth, setScreenWidth] = useState(
-    typeof window !== "undefined" ? window.innerWidth : 0
-  );
+  // Start at 0 on both server and client to avoid a hydration mismatch;
+  // the real width is read after mount.
+  const [screenWidth, setScreenWidth] = useState(0);
 
   const sectionData = {
-    years: currentYear - 2001,
-    projects: 100,
-    reviews: 30,
-    happyPercent: 97,
+    years: currentYear - business.foundedYear,
+    ...stats,
   };
 
   useEffect(() => {
@@ -30,6 +31,7 @@ export const Counting = () => {
     const handleResize = () => {
       setScreenWidth(window.innerWidth);
     };
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);
@@ -39,14 +41,14 @@ export const Counting = () => {
   return (
     <DisplayWrapper ref={ref}>
       <ContentWrapper>
-        <Number data-aos={screenWidth < 600 ? "fade-left" : "fade-up"}>
+        <CountValue data-aos={screenWidth < 600 ? "fade-left" : "fade-up"}>
           {isVisible ? (
             <CountUp start={0} end={sectionData.years} duration={5} />
           ) : (
             "0"
           )}
           +
-        </Number>
+        </CountValue>
         <Label>
           Experience
           <br />
@@ -55,14 +57,14 @@ export const Counting = () => {
       </ContentWrapper>
       <Divider />
       <ContentWrapper>
-        <Number data-aos={screenWidth < 600 ? "fade-right" : "fade-up"}>
+        <CountValue data-aos={screenWidth < 600 ? "fade-right" : "fade-up"}>
           {isVisible ? (
             <CountUp start={0} end={sectionData.projects} duration={5} />
           ) : (
             "0"
           )}
           +
-        </Number>
+        </CountValue>
         <Label>
           Interior
           <br />
@@ -71,14 +73,14 @@ export const Counting = () => {
       </ContentWrapper>
       <Divider className="middle" />
       <ContentWrapper>
-        <Number data-aos={screenWidth < 600 ? "fade-left" : "fade-up"}>
+        <CountValue data-aos={screenWidth < 600 ? "fade-left" : "fade-up"}>
           {isVisible ? (
             <CountUp start={0} end={sectionData.reviews} duration={5} />
           ) : (
             "0"
           )}
           +
-        </Number>
+        </CountValue>
         <Label>
           Positive
           <br />
@@ -87,14 +89,14 @@ export const Counting = () => {
       </ContentWrapper>
       <Divider />
       <ContentWrapper>
-        <Number data-aos={screenWidth < 600 ? "fade-right" : "fade-up"}>
+        <CountValue data-aos={screenWidth < 600 ? "fade-right" : "fade-up"}>
           {isVisible ? (
             <CountUp start={0} end={sectionData.happyPercent} duration={5} />
           ) : (
             "0"
           )}
           %
-        </Number>
+        </CountValue>
         <Label>
           Happy
           <br />
@@ -111,7 +113,7 @@ const DisplayWrapper = styled.div`
   align-items: center;
   justify-content: space-evenly;
   padding: 50px 0;
-  background-color: ${({ theme }) => theme.globalColors.ternaryColor};
+  background-color: ${({ theme }) => theme.colors.primaryLight};
   transition: all 0.5s ease-in-out;
 
   @media (max-width: 500px) {
@@ -123,7 +125,7 @@ const DisplayWrapper = styled.div`
 const Divider = styled.div`
   width: 2px;
   height: 100px;
-  background-color: grey;
+  background-color: ${({ theme }) => theme.colors.muted};
   transition: all 0.5s ease-in-out;
 
   @media (max-width: 500px) {
@@ -149,9 +151,9 @@ const ContentWrapper = styled.div`
   }
 `;
 
-const Number = styled.p`
+const CountValue = styled.p`
   font-size: 40px;
-  color: black;
+  color: ${({ theme }) => theme.colors.text};
   transition: all 0.5s ease-in-out;
 
   @media (max-width: 550px) {
@@ -161,7 +163,7 @@ const Number = styled.p`
 
 const Label = styled.p`
   font-size: 20px;
-  color: ${({ theme }) => theme.globalColors.primaryColor};
+  color: ${({ theme }) => theme.colors.primary};
   transition: all 0.5s ease-in-out;
 
   @media (max-width: 550px) {

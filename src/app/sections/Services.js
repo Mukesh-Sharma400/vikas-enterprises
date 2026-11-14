@@ -1,16 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import Slider from "react-slick";
 import styled from "styled-components";
-import turnkey from "../../../public/assets/turnkey.jpg";
-import painting from "../../../public/assets/painting.png";
-import civilWork from "../../../public/assets/civil-work.jpg";
-import electrical from "../../../public/assets/electrical.jpg";
-import carpenters from "../../../public/assets/carpenters.jpg";
-import modular from "../../../public/assets/modular-kitchen.jpg";
-import fabrication from "../../../public/assets/fabrication.jpg";
-import interior from "../../../public/assets/interior-design.jpg";
-import flooring from "../../../public/assets/tiling-flooring.jpg";
-import falseCeiling from "../../../public/assets/false-ceiling.jpg";
+import { services } from "@/app/data/site";
 
 export const Services = () => {
   const settings = {
@@ -42,68 +35,25 @@ export const Services = () => {
       "Dive into the realm of excellence with our tailored services, meticulously crafted for every space and vision. Discover the unparalleled quality of our offerings.",
   };
 
-  const servicesData = [
-    {
-      image: interior,
-      title: "Interior Designing",
-    },
-    {
-      image: civilWork,
-      title: "Civil Work",
-    },
-    {
-      image: flooring,
-      title: "Tiling & Flooring",
-    },
-    {
-      image: electrical,
-      title: "Electrical Work",
-    },
-    {
-      image: fabrication,
-      title: "Fabrication Work",
-    },
-    {
-      image: painting,
-      title: "Painting Work",
-    },
-    {
-      image: falseCeiling,
-      title: "False Ceiling",
-    },
-    {
-      image: carpenters,
-      title: "Carpenter Work",
-    },
-    {
-      image: modular,
-      title: "Modular Kitchen",
-    },
-    {
-      image: turnkey,
-      title: "Turnkey Contractor",
-    },
-  ];
-
   return (
     <DisplayWrapper>
-      <Header data-aos="fade-up">
+      <SectionHeader data-aos="fade-up">
         <ServicesHeading>{sectionData.smallHeading}</ServicesHeading>
         <Heading>{sectionData.heading}</Heading>
         <Description>{sectionData.description}</Description>
-      </Header>
-      <MySlider {...settings}>
-        {servicesData.map((service, index) => (
-          <MySlideWrapper key={index}>
-            <MySlide>
-              <SlideTitle>{service.title}</SlideTitle>
+      </SectionHeader>
+      <ServicesSlider {...settings}>
+        {services.map((service, index) => (
+          <ServiceSlideWrapper key={index}>
+            <ServiceSlide>
+              <SlideTitle>{service.name}</SlideTitle>
               <SlideImageWrapper>
-                <SlideImage src={service.image} alt={service.title} />
+                <SlideImage src={service.image} alt={service.name} />
               </SlideImageWrapper>
-            </MySlide>
-          </MySlideWrapper>
+            </ServiceSlide>
+          </ServiceSlideWrapper>
         ))}
-      </MySlider>
+      </ServicesSlider>
     </DisplayWrapper>
   );
 };
@@ -113,11 +63,11 @@ const DisplayWrapper = styled.div`
   margin-top: 50px;
   padding-bottom: 50px;
   border-radius: 40px;
-  background-color: ${({ theme }) => theme.globalColors.primaryColor};
+  background-color: ${({ theme }) => theme.colors.primary};
   transition: all 0.5s ease-in-out;
 `;
 
-const Header = styled.div`
+const SectionHeader = styled.div`
   max-width: 900px;
   margin: 0 auto;
   text-align: center;
@@ -140,14 +90,14 @@ const Header = styled.div`
 
 const ServicesHeading = styled.p`
   font-size: 20px;
-  color: ${({ theme }) => theme.globalColors.ternaryColor};
+  color: ${({ theme }) => theme.colors.primaryLight};
   text-transform: uppercase;
   letter-spacing: 2px;
   transition: all 0.5s ease-in-out;
 `;
 
 const Heading = styled.h1`
-  color: ${({ theme }) => theme.globalColors.ternaryColor};
+  color: ${({ theme }) => theme.colors.primaryLight};
   transition: all 0.5s ease-in-out;
 
   @media (max-width: 1024px) {
@@ -161,7 +111,7 @@ const Heading = styled.h1`
 const Description = styled.p`
   font-size: 20px;
   letter-spacing: 1px;
-  color: ${({ theme }) => theme.globalColors.ternaryColor};
+  color: ${({ theme }) => theme.colors.primaryLight};
   transition: all 0.5s ease-in-out;
 
   @media (max-width: 1024px) {
@@ -172,7 +122,7 @@ const Description = styled.p`
   }
 `;
 
-const MySlider = styled(Slider)`
+const ServicesSlider = styled(Slider)`
   width: 85%;
   margin: 0 auto;
   transition: all 0.5s ease-in-out;
@@ -191,18 +141,17 @@ const MySlider = styled(Slider)`
   }
 `;
 
-const MySlideWrapper = styled.div`
+const ServiceSlideWrapper = styled.div`
   transition: all 0.5s ease-in-out;
 `;
 
-const MySlide = styled.div`
+const ServiceSlide = styled.div`
   width: 100%;
   height: 100%;
   padding: 10px;
   border-radius: 20px;
-  background-color: ${({ theme }) => theme.globalColors.ternaryColor};
-  filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04))
-    drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
+  background-color: ${({ theme }) => theme.colors.primaryLight};
+  filter: ${({ theme }) => theme.shadows.dropLg};
   transition: all 0.5s ease-in-out;
 `;
 
@@ -228,7 +177,7 @@ const SlideImage = styled(Image)`
 const SlideTitle = styled.p`
   text-align: center;
   font-size: 23px;
-  color: black;
+  color: ${({ theme }) => theme.colors.text};
   padding-bottom: 10px;
   transition: all 0.5s ease-in-out;
 
@@ -254,10 +203,9 @@ const StyledArrowButton = styled.button`
   top: 50%;
   transform: translateY(-50%);
   font-size: 50px;
-  color: ${({ theme }) => theme.globalColors.ternaryColor};
+  color: ${({ theme }) => theme.colors.primaryLight};
   background-color: transparent;
-  filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04))
-    drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
+  filter: ${({ theme }) => theme.shadows.dropLg};
   border: none;
   cursor: pointer;
   z-index: 1;
@@ -278,12 +226,12 @@ const StyledArrowButton = styled.button`
 
 const StyledNextArrow = ({ onClick }) => (
   <StyledArrowButton className="next" onClick={onClick}>
-    <i class="bi bi-caret-right-fill"></i>
+    <i className="bi bi-caret-right-fill"></i>
   </StyledArrowButton>
 );
 
 const StyledPrevArrow = ({ onClick }) => (
   <StyledArrowButton className="prev" onClick={onClick}>
-    <i class="bi bi-caret-left-fill"></i>
+    <i className="bi bi-caret-left-fill"></i>
   </StyledArrowButton>
 );

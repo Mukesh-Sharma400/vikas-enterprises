@@ -1,11 +1,13 @@
+"use client";
+
 import Image from "next/image";
 import styled from "styled-components";
 import { useRouter } from "next/navigation";
-import galleryOne from "../../../public/assets/gallery-one.jpg";
-import galleryTwo from "../../../public/assets/gallery-two.jpg";
-import galleryFour from "../../../public/assets/gallery-four.jpg";
-import galleryFive from "../../../public/assets/gallery-five.jpg";
-import galleryThree from "../../../public/assets/gallery-three.jpg";
+import galleryLivingRoom from "#/gallery-living-room.webp";
+import galleryWardrobe from "#/gallery-wardrobe.webp";
+import galleryBedroom from "#/gallery-bedroom.webp";
+import galleryBedroomStorage from "#/gallery-bedroom-storage.webp";
+import galleryTvUnit from "#/gallery-tv-unit.webp";
 
 export const Gallery = () => {
   const router = useRouter();
@@ -19,7 +21,7 @@ export const Gallery = () => {
 
   return (
     <DisplayWrapper>
-      <Header data-aos="fade-up">
+      <SectionHeader data-aos="fade-up">
         <HeadingButtonWrapper>
           <HeadingWrapper>
             <GalleryHeadingWrapper>
@@ -43,32 +45,40 @@ export const Gallery = () => {
           </SeeMoreBtn>
         </HeadingButtonWrapper>
         <Description>{sectionData.description}</Description>
-      </Header>
+      </SectionHeader>
       <GalleryWrapper>
         <div className="Column1">
-          <StyledImage src={galleryOne} alt="Gallery One" data-aos="fade-up" />
+          <GalleryImage
+            src={galleryLivingRoom}
+            alt="Living room with lounge seating and bookshelf"
+            data-aos="fade-up"
+          />
         </div>
         <div className="Column21">
-          <StyledImage src={galleryTwo} alt="Gallery Two" data-aos="fade-up" />
+          <GalleryImage
+            src={galleryWardrobe}
+            alt="Bedroom with floor-to-ceiling wardrobe"
+            data-aos="fade-up"
+          />
         </div>
         <div className="Column22">
-          <StyledImage
-            src={galleryThree}
-            alt="Gallery Three"
+          <GalleryImage
+            src={galleryTvUnit}
+            alt="Living room TV unit with open shelving"
             data-aos="fade-up"
           />
         </div>
         <div className="Column31">
-          <StyledImage
-            src={galleryFour}
-            alt="Gallery Four"
+          <GalleryImage
+            src={galleryBedroom}
+            alt="Bedroom with upholstered headboard and wardrobe"
             data-aos="fade-up"
           />
         </div>
         <div className="Column32">
-          <StyledImage
-            src={galleryFive}
-            alt="Gallery Five"
+          <GalleryImage
+            src={galleryBedroomStorage}
+            alt="Bedroom with overhead storage and curtains"
             data-aos="fade-up"
           />
         </div>
@@ -83,7 +93,7 @@ const DisplayWrapper = styled.div`
   transition: all 0.5s ease-in-out;
 `;
 
-const Header = styled.div`
+const SectionHeader = styled.div`
   max-width: 1000px;
   margin: 0 auto;
   padding: 50px 0;
@@ -124,14 +134,14 @@ const GalleryHeadingWrapper = styled.div`
 
 const GalleryHeading = styled.p`
   font-size: 20px;
-  color: black;
+  color: ${({ theme }) => theme.colors.text};
   text-transform: uppercase;
   letter-spacing: 2px;
   transition: all 0.5s ease-in-out;
 `;
 
 const Heading = styled.h1`
-  color: ${({ theme }) => theme.globalColors.primaryColor};
+  color: ${({ theme }) => theme.colors.primary};
   transition: all 0.5s ease-in-out;
 
   @media (max-width: 1024px) {
@@ -145,9 +155,9 @@ const Heading = styled.h1`
 const SmallSeeMoreBtn = styled.button`
   font-size: 18px;
   font-weight: 600;
-  color: ${({ theme }) => theme.globalColors.ternaryColor};
-  background-color: ${({ theme }) => theme.globalColors.primaryColor};
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  color: ${({ theme }) => theme.colors.primaryLight};
+  background-color: ${({ theme }) => theme.colors.primary};
+  box-shadow: ${({ theme }) => theme.shadows.card};
   border-radius: 40px;
   width: 150px;
   height: 40px;
@@ -162,9 +172,9 @@ const SmallSeeMoreBtn = styled.button`
 const SeeMoreBtn = styled.button`
   font-size: 20px;
   font-weight: 600;
-  color: ${({ theme }) => theme.globalColors.ternaryColor};
-  background-color: ${({ theme }) => theme.globalColors.primaryColor};
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  color: ${({ theme }) => theme.colors.primaryLight};
+  background-color: ${({ theme }) => theme.colors.primary};
+  box-shadow: ${({ theme }) => theme.shadows.card};
   border-radius: 40px;
   width: 180px;
   height: 50px;
@@ -178,7 +188,7 @@ const SeeMoreBtn = styled.button`
 const Description = styled.p`
   font-size: 20px;
   letter-spacing: 1px;
-  color: grey;
+  color: ${({ theme }) => theme.colors.muted};
   transition: all 0.5s ease-in-out;
 
   @media (max-width: 1024px) {
@@ -266,12 +276,12 @@ const GalleryWrapper = styled.div`
   }
 `;
 
-const StyledImage = styled(Image)`
+const GalleryImage = styled(Image)`
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 15px;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  box-shadow: ${({ theme }) => theme.shadows.card};
   transition: all 0.5s ease-in-out;
 
   &:hover {

@@ -1,19 +1,21 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import copy from "clipboard-copy";
 import styled from "styled-components";
-import { Toast } from "../components/Toast";
+import { Toast } from "@/app/components/Toast";
+import { business, socialLinks } from "@/app/data/site";
 import { useEffect, useRef, useState } from "react";
-import { CircularText } from "../components/CircularRotatingText";
-import backgroundImage from "../../../public/assets/hero-background.png";
+import { CircularRotatingText } from "@/app/components/CircularRotatingText";
+import heroBackground from "#/hero-background.webp";
 
 export const Hero = () => {
   const timeoutRef = useRef(null);
-  const phoneNumber = "+919321048241";
-  const emailAddress = "vikasenterprises201@gmail.com";
+  const socialLinksRef = useRef(null);
   const [toast, setToast] = useState({ visible: false, message: "" });
 
-  const showToastMethod = (message) => {
+  const showToast = (message) => {
     setToast({ visible: true, message });
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
@@ -24,71 +26,55 @@ export const Hero = () => {
   };
 
   const handleOpenDialer = () => {
-    const telUrl = `tel:${phoneNumber}`;
+    const telUrl = `tel:${business.phone}`;
     window.location.href = telUrl;
   };
 
   const handleCopyEmail = () => {
-    const emailToCopy = `${emailAddress}`;
+    const emailToCopy = business.email;
     copy(emailToCopy);
-    showToastMethod("Email copied to clipboard");
+    showToast("Email copied to clipboard");
   };
 
   useEffect(() => {
-    const tooltipTriggerList = [].slice.call(
-      document.querySelectorAll('[data-bs-toggle="tooltip"]')
-    );
-    const tooltipList = tooltipTriggerList.map((tooltipTriggerEl) => {
-      return new window.bootstrap.Tooltip(tooltipTriggerEl);
+    // Load Bootstrap's Tooltip from the npm package instead of relying on the
+    // CDN script having set window.bootstrap before this effect runs.
+    let cancelled = false;
+    let tooltipList = [];
+
+    import("bootstrap/dist/js/bootstrap.bundle.min.js").then(({ Tooltip }) => {
+      if (cancelled || !socialLinksRef.current) return;
+      tooltipList = Array.from(
+        socialLinksRef.current.querySelectorAll('[data-bs-toggle="tooltip"]'),
+      ).map((el) => Tooltip.getOrCreateInstance(el));
     });
+
+    // Dispose tooltips on unmount so none are left stuck on screen
+    return () => {
+      cancelled = true;
+      tooltipList.forEach((tooltip) => tooltip.dispose());
+    };
   }, []);
 
   const sectionData = {
     heading: "Elevating Spaces Crafting Dreams",
     description:
-      "We specialize in transforming visions into reality. Explore our work of innovative architectural.",
+      "We specialize in transforming visions into reality. Explore our innovative interior and architectural work.",
   };
-
-  const socialLinks = [
-    {
-      className: "bi bi-whatsapp",
-      href: `https://wa.me/${phoneNumber}`,
-      tooltip: "WhatsApp",
-      ariaLabel: "WhatsApp",
-    },
-    {
-      className: "bi bi-facebook",
-      href: "https://www.facebook.com/vikasenterprises201",
-      tooltip: "Facebook",
-      ariaLabel: "Facebook",
-    },
-    {
-      className: "bi bi-instagram",
-      href: "https://www.instagram.com/vikas_enterprises201",
-      tooltip: "Instagram",
-      ariaLabel: "Instagram",
-    },
-    {
-      className: "bi bi-threads",
-      href: "https://www.threads.net/@vikas_enterprises201",
-      tooltip: "Threads",
-      ariaLabel: "Threads",
-    },
-    {
-      className: "bi bi-twitter-x",
-      href: "https://twitter.com/vikas_enter201",
-      tooltip: "Twitter / X",
-      ariaLabel: "Twitter / X",
-    },
-  ];
 
   return (
     <DisplayWrapper>
-      <ToastWrapper showToast={toast.visible}>
+      <ToastWrapper $showToast={toast.visible}>
         <Toast message={toast.message} />
       </ToastWrapper>
       <BackgroundImageWrapper>
-        <BackgroundImage src={backgroundImage} alt="Background Image" />
+        <BackgroundImage
+          src={heroBackground}
+          alt=""
+          priority
+          sizes="100vw"
+          placeholder="blur"
+        />
       </BackgroundImageWrapper>
       <ContentWrapper>
         <InnerContentWrapper data-aos="fade-up">
@@ -96,7 +82,7 @@ export const Hero = () => {
             data-aos="zoom-out"
             data-aos-delay="1000"
           >
-            <CircularText />
+            <CircularRotatingText />
           </CircularRotatingTextWrapper>
           <Heading>{sectionData.heading}</Heading>
           <Description>{sectionData.description}</Description>
@@ -104,7 +90,7 @@ export const Hero = () => {
             <PrimaryBtn onClick={handleOpenDialer}>Call Now</PrimaryBtn>
             <SecondaryBtn onClick={handleCopyEmail}>Copy Email</SecondaryBtn>
           </ButtonsWrapper>
-          <SocialLinksWrapper>
+          <SocialLinksWrapper ref={socialLinksRef}>
             {socialLinks.map((link, index) => (
               <SocialLink
                 key={index}
@@ -112,9 +98,9 @@ export const Hero = () => {
                 href={link.href}
                 target="_blank"
                 data-bs-toggle="tooltip"
-                data-bs-title={link.tooltip}
+                data-bs-title={link.label}
                 data-bs-custom-class="custom-tooltip"
-                aria-label={link.ariaLabel}
+                aria-label={link.label}
               ></SocialLink>
             ))}
           </SocialLinksWrapper>
@@ -134,7 +120,7 @@ const DisplayWrapper = styled.div`
 
 const ToastWrapper = styled.div`
   position: fixed;
-  top: ${(props) => (props.showToast ? "10%" : "-20%")};
+  top: ${(props) => (props.$showToast ? "10%" : "-20%")};
   left: 50%;
   transform: translateX(-50%);
   z-index: 2;
@@ -191,9 +177,8 @@ const InnerContentWrapper = styled.div`
 
 const Heading = styled.h1`
   font-size: 60px;
-  color: ${({ theme }) => theme.globalColors.ternaryColor};
-  filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04))
-    drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
+  color: ${({ theme }) => theme.colors.primaryLight};
+  filter: ${({ theme }) => theme.shadows.dropLg};
   transition: all 0.5s ease-in-out;
 
   @media (max-width: 1200px) {
@@ -221,9 +206,8 @@ const Heading = styled.h1`
 
 const Description = styled.p`
   font-size: 20px;
-  color: ${({ theme }) => theme.globalColors.ternaryColor};
-  filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1))
-    drop-shadow(0 1px 1px rgb(0 0 0 / 0.06));
+  color: ${({ theme }) => theme.colors.primaryLight};
+  filter: ${({ theme }) => theme.shadows.dropSm};
   transition: all 0.5s ease-in-out;
 
   @media (max-width: 1050px) {
@@ -250,14 +234,13 @@ const ButtonsWrapper = styled.div`
 const PrimaryBtn = styled.button`
   font-size: 20px;
   font-weight: 600;
-  color: ${({ theme }) => theme.globalColors.ternaryColor};
-  background-color: ${({ theme }) => theme.globalColors.primaryColor};
+  color: ${({ theme }) => theme.colors.primaryLight};
+  background-color: ${({ theme }) => theme.colors.primary};
   border-radius: 40px;
   width: 180px;
   min-width: 180px;
   height: 50px;
-  filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1))
-    drop-shadow(0 1px 1px rgb(0 0 0 / 0.06));
+  filter: ${({ theme }) => theme.shadows.dropSm};
   transition: all 0.5s ease-in-out;
 
   @media (max-width: 768px) {
@@ -271,14 +254,13 @@ const PrimaryBtn = styled.button`
 const SecondaryBtn = styled.button`
   font-size: 20px;
   font-weight: 600;
-  color: ${({ theme }) => theme.globalColors.primaryColor};
-  background-color: ${({ theme }) => theme.globalColors.ternaryColor};
+  color: ${({ theme }) => theme.colors.primary};
+  background-color: ${({ theme }) => theme.colors.primaryLight};
   border-radius: 40px;
   width: 180px;
   min-width: 180px;
   height: 50px;
-  filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1))
-    drop-shadow(0 1px 1px rgb(0 0 0 / 0.06));
+  filter: ${({ theme }) => theme.shadows.dropSm};
   transition: all 0.5s ease-in-out;
 
   @media (max-width: 768px) {
@@ -307,10 +289,9 @@ const SocialLink = styled(Link)`
   text-decoration: none;
   font-size: 25px;
   border-radius: 50%;
-  color: ${({ theme }) => theme.globalColors.primaryColor};
-  background-color: ${({ theme }) => theme.globalColors.ternaryColor};
-  filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1))
-    drop-shadow(0 1px 1px rgb(0 0 0 / 0.06));
+  color: ${({ theme }) => theme.colors.primary};
+  background-color: ${({ theme }) => theme.colors.primaryLight};
+  filter: ${({ theme }) => theme.shadows.dropSm};
   transition: all 0.5s ease-in-out;
 `;
 
